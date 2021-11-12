@@ -10,7 +10,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 # Get list of dates to use in url strings
 dates = []
-start = dt.date(2021, 11, 1)
+start = dt.date(2020, 1, 1)
 end = dt.date.today()
 delta = end - start
 for i in range(int(delta.days+1)):
@@ -35,8 +35,8 @@ def scrape(date_urls):
     browser = Browser('chrome', **executable_path, headless=False)
 
     # Visit URL
-    url = "https://spotifycharts.com/regional/us/daily/"
-    browser.visit(url)
+    home_url = "https://spotifycharts.com/regional/us/daily/"
+    browser.visit(home_url)
 
     # Set up HTML parser
     html = browser.html
@@ -44,14 +44,15 @@ def scrape(date_urls):
     playlist = song_soup.find('table', class_='chart-table')
     
     # Run scraping function
-    for i in date_urls:
+    for url in date_urls:
         for i in playlist.find('tbody').findAll('tr'):
             song = i.find('td', class_='chart-table-track').find('strong').get_text()
 
             artist = i.find('td', class_='chart-table-track').find('span').get_text()
             artist = artist.replace("by ", "").strip()
 
-            songurl = i.find('td', class_='chart-table-image').find('a').get_text('href')
+            songurl = i.find('td', class_='chart-table-image').find('a').get('href')
+            songid = songurl.split("track/")[1]
 
             position = i.find('td', class_='chart-table-position').get_text()
 
@@ -59,16 +60,16 @@ def scrape(date_urls):
 
             date = url.split("daily/")[1]
 
-            data.append([songurl, song, artist, date, position, streams])
+            data.append([songid, songurl, song, artist, date, position, streams])
     
     # Stop webdriver
     browser.quit()
 
     # Convert to pandas DataFrame
-    spotify_df = pd.DataFrame(data, columns = ["song_url", "song", "artist", "date", "position", "streams"])
+    spotify_df = pd.DataFrame(data, columns = ["song_id", "song_url", "song", "artist", "date", "position", "streams"])
 
     # Save as csv file in same folder
-    with open('spotifytop200.csv', 'w') as x:
+    with open('./Resources/spotifytop200.csv', 'w') as x:
         spotify_df.to_csv(x, header= True, index=False)
     
     # Print dataframe
