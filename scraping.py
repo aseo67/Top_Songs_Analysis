@@ -15,7 +15,7 @@ end = dt.date.today()
 delta = end - start
 for i in range(int(delta.days+1)):
     day = start + dt.timedelta(days=i)
-    url_string = day.strftime("%Y-%m_%d")
+    url_string = day.strftime("%Y-%m-%d")
     dates.append(url_string)
 
 # Get list of full urls for each date

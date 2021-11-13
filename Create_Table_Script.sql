@@ -82,4 +82,3 @@ DROP TABLE features;
 DROP TABLE total_streams;
 DROP TABLE highest_position;
 DROP TABLE track_artist;
-DROP TABLE ;
