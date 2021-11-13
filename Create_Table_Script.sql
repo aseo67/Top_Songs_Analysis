@@ -1,34 +1,85 @@
 -- CREATE TABLES FOR LOADING DATA
-CREATE TABLE top_songs (
-	"Index" INT, 
+CREATE TABLE songs (
 	song_id VARCHAR,
-	song_name VARCHAR, 
+	song VARCHAR, 
 	artist VARCHAR, 
-	number_of_times_charted INT,
-	highest_charting_position INT, 
-	week_of_highest_charting_start DATE,
-	week_of_highest_charting_end DATE,
-	number_weeks_charted INT,
-	streams INT, 
-	artist_followers INT, 
-	genre VARCHAR,
-	release_date DATE,
-	popularity NUMERIC, 
-	acousticness NUMERIC,
+	streams INT,
+	position INT, 
 	danceability NUMERIC, 
 	energy NUMERIC,
-	liveness NUMERIC,
+	key VARCHAR,
 	loudness NUMERIC,
+	mode VARCHAR, 
 	speechiness NUMERIC,
+	acousticness NUMERIC,
+	instrumentalness NUMERIC,
+	liveness NUMERIC,
 	valence NUMERIC,
-	duration_ms INT,
 	tempo NUMERIC,
-	chord VARCHAR,
-	PRIMARY KEY ("Index")
+	duration_ms NUMERIC,
+	time_signature VARCHAR,
+	PRIMARY KEY ("song_id")
+);
+
+CREATE TABLE raw_scrape (
+	song_id VARCHAR,
+	song VARCHAR,
+	artist VARCHAR, 
+	date DATE, 
+	position INT, 
+	streams INT
+);
+
+CREATE TABLE features (
+	song_id VARCHAR, 
+	danceability NUMERIC,
+	energy NUMERIC,
+	key VARCHAR, 
+	loudness NUMERIC, 
+	mode VARCHAR, 
+	speechiness NUMERIC, 
+	acousticness NUMERIC, 
+	instrumentalness NUMERIC, 
+	liveness NUMERIC, 
+	valence NUMERIC, 
+	tempo NUMERIC, 
+	duration_ms NUMERIC, 
+	time_signature VARCHAR, 
+	PRIMARY KEY ("song_id")
+);
+
+CREATE TABLE total_streams (
+	song_id VARCHAR, 
+	streams INT, 
+	PRIMARY KEY ("song_id")
+);
+
+CREATE TABLE highest_position (
+	song_id VARCHAR, 
+	position INT, 
+	PRIMARY KEY ("song_id")
+);
+
+CREATE TABLE track_artist (
+	song_id VARCHAR, 
+	song VARCHAR, 
+	artist VARCHAR, 
+	PRIMARY KEY ("song_id")
 );
 
 -- SELECT ALL DATA FOR EACH TABLE
-SELECT * FROM top_songs;
+SELECT * FROM songs;
+SELECT * FROM raw_scrape;
+SELECT * FROM features;
+SELECT * FROM total_streams;
+SELECT * FROM highest_position;
+SELECT * FROM track_artist;
 
 -- IF NEED TO DELETE TO RECREATE TABLE
-DROP TABLE top_songs;
+DROP TABLE songs;
+DROP TABLE raw_scrape;
+DROP TABLE features;
+DROP TABLE total_streams;
+DROP TABLE highest_position;
+DROP TABLE track_artist;
+DROP TABLE ;
