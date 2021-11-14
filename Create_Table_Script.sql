@@ -1,4 +1,13 @@
 -- CREATE TABLES FOR LOADING DATA
+CREATE TABLE raw_scrape (
+	song_id VARCHAR,
+	song VARCHAR,
+	artist VARCHAR, 
+	date VARCHAR, 
+	position INT, 
+	streams VARCHAR
+);
+
 CREATE TABLE songs (
 	song_id VARCHAR,
 	song VARCHAR, 
@@ -21,7 +30,7 @@ CREATE TABLE songs (
 	PRIMARY KEY ("song_id")
 );
 
-CREATE TABLE raw_scrape (
+CREATE TABLE clean_scrape (
 	song_id VARCHAR,
 	song VARCHAR,
 	artist VARCHAR, 
@@ -68,16 +77,18 @@ CREATE TABLE track_artist (
 );
 
 -- SELECT ALL DATA FOR EACH TABLE
-SELECT * FROM songs;
 SELECT * FROM raw_scrape;
+SELECT * FROM songs;
+SELECT * FROM clean_scrape;
 SELECT * FROM features;
 SELECT * FROM total_streams;
 SELECT * FROM highest_position;
 SELECT * FROM track_artist;
 
 -- IF NEED TO DELETE TO RECREATE TABLE
-DROP TABLE songs;
 DROP TABLE raw_scrape;
+DROP TABLE songs;
+DROP TABLE clean_scrape;
 DROP TABLE features;
 DROP TABLE total_streams;
 DROP TABLE highest_position;
