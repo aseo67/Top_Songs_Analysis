@@ -1,6 +1,8 @@
 -- CREATE TABLES FOR LOADING DATA
 CREATE TABLE raw_scrape (
+	index VARCHAR, 
 	song_id VARCHAR,
+	song_url VARCHAR,
 	song VARCHAR,
 	artist VARCHAR, 
 	date VARCHAR, 

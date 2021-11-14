@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup as soup
 import pandas as pd
 import datetime as dt
 from webdriver_manager.chrome import ChromeDriverManager
+import psycopg2
 
 # Get list of dates to use in url strings
 dates = []
@@ -70,6 +71,14 @@ def scrape(date_urls):
     # Save as csv file in same folder
     with open('./Resources/spotifytop200.csv', 'w') as x:
         spotify_df.to_csv(x, header= True, index=False)
+    
+    # Upload dataframe to postgreSQL database
+    from config import db_pswd
+    from sqlalchemy import create_engine
+    # Set up connection to database
+    engine = create_engine(f'postgresql://postgres:{db_pswd}@localhost:5432/project_spotify_db')
+    # Upload dataframe to database ("raw_scrape" table)
+    spotify_df.to_sql(name='raw_scrape', con=engine, if_exists='append')
     
     # Print dataframe
     print(spotify_df)
