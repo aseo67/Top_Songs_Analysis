@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    <form action="/predict" method="POST">
+        <label>Danceability (0.0 - 1.0):</label>
+        <input type="text" name="danceability">
+        <br>
+        <label>Energy (0.0 - 1.0):</label>
+        <input type="text" name="energy">
+        <br>
+        <label>Loudness (-60dB - 0dB):</label>
+        <input type="text" name="loudness">
+        <br>
+        <label>Speechiness (0.0 - 1.0):</label>
+        <input type="text" name="speechiness">
+        <br>
+        <label>Acousticness (0.0 - 1.0):</label>
+        <input type="text" name="acousticness">
+        <br>
+        <label>Instrumentalness (0.0 - 1.0):</label>
+        <input type="text" name="instrumentalness">
+        <br>
+        <label>Liveness (0.0 - 1.0):</label>
+        <input type="text" name="liveness">
+        <br>
+        <label>Valence (0.0 - 1.0):</label>
+        <input type="text" name="valence">
+        <br>
+        <label>Tempo (BPM):</label>
+        <input type="text" name="tempo">
+        <br>
+        <label>Duration (milliseconds, note: 1 minute = 60000 milliseconds):</label>
+        <input type="text" name="duration_ms">
+        <br>
+        <label>Key/Chord:</label>
+        <input type="text" name="key_type">
+        <br>
+        <label>Mode (Major/Minor):</label>
+        <input type="text" name="mode_type">
+        <br>
+        <label>Time Signature:</label>
+        <input type="text" name="time_sig_type">
+        <br>
+        
+        <input type="submit">
+    </form>
+</body>
+</html>
