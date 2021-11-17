@@ -1,50 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis</title>
 </head>
 <body>
+    <h1>Spotify Songs Analysis</h1>
+    <p></p>
+    <h3>Machine Learning Model</h3>
+    <p>Can we predict whether a song will be able to achieve a rank in the top 20 of the Spotify United States Top 200 chart, based on various song attributes/features?</p>
+    <h4>Song Features/Attributes</h4>
     <form action="/predict" method="POST">
         <label>Danceability (0.0 - 1.0):</label>
-        <input type="text" name="danceability">
+        <input type="float" name="danceability">
         <br>
         <label>Energy (0.0 - 1.0):</label>
-        <input type="text" name="energy">
+        <input type="float" name="energy">
         <br>
         <label>Loudness (-60dB - 0dB):</label>
-        <input type="text" name="loudness">
+        <input type="number" min=-60 max=0 name="loudness">
         <br>
         <label>Speechiness (0.0 - 1.0):</label>
-        <input type="text" name="speechiness">
+        <input type="float" name="speechiness">
         <br>
         <label>Acousticness (0.0 - 1.0):</label>
-        <input type="text" name="acousticness">
+        <input type="float" name="acousticness">
         <br>
         <label>Instrumentalness (0.0 - 1.0):</label>
-        <input type="text" name="instrumentalness">
+        <input type="float" name="instrumentalness">
         <br>
         <label>Liveness (0.0 - 1.0):</label>
-        <input type="text" name="liveness">
+        <input type="float" name="liveness">
         <br>
         <label>Valence (0.0 - 1.0):</label>
-        <input type="text" name="valence">
+        <input type="float" name="valence">
         <br>
         <label>Tempo (BPM):</label>
-        <input type="text" name="tempo">
+        <input type="number" name="tempo">
         <br>
-        <label>Duration (milliseconds, note: 1 minute = 60000 milliseconds):</label>
-        <input type="text" name="duration_ms">
-        <br>
-        <label>Key/Chord:</label>
-        <input type="text" name="key_type">
+        <label>Key:</label>
+        <select name="key_type" id="key_type">
+            <option value=0>A</option>
+            <option value=1>A♯/B♭</option>
+            <option value=2>B</option>
+            <option value=3>C</option>
+            <option value=4>C♯/D♭</option>
+            <option value=5>D</option>
+            <option value=6>D♯/E♭</option>
+            <option value=7>E</option>
+            <option value=8>F</option>
+            <option value=9>F♯/G♭</option>
+            <option value=10>G</option>
+            <option value=11>G♯/A♭</option>
+        </select>
         <br>
         <label>Mode (Major/Minor):</label>
-        <input type="text" name="mode_type">
+        <select name="mode_type" id="mode_type">
+            <option value=0>Major</option>
+            <option value=1>Minor</option>
+        </select>
         <br>
-        <label>Time Signature:</label>
-        <input type="text" name="time_sig_type">
         <br>
-        
         <input type="submit">
     </form>
 </body>

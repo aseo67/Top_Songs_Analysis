@@ -16,10 +16,8 @@ def predictions(
     liveness, 
     valence, 
     tempo, 
-    duration_ms, 
     key_type, 
     mode_type, 
-    time_sig_type
 ):
     # Set up connection to database
     from config import db_pswd
@@ -63,9 +61,7 @@ def predictions(
         liveness, 
         valence, 
         tempo, 
-        duration_ms, 
         key_type, 
         mode_type, 
-        time_sig_type
     ]])
 

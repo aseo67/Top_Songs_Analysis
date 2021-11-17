@@ -13,28 +13,36 @@ def predict():
     if request.method == "POST":
         danceability = float(request.form["danceability"])
         print(danceability)
+
         energy = float(request.form["energy"])
         print(energy)
-        loudness = float(request.form["loudness"])
+
+        loudness = int(request.form["loudness"])
         print(loudness)
+
         speechiness = float(request.form["speechiness"])
         print(speechiness)
+
         acousticness = float(request.form["acousticness"])
         print(acousticness)
+
         instrumentalness = float(request.form["instrumentalness"])
         print(instrumentalness)
+
         liveness = float(request.form["liveness"])
         print(liveness)
+
         valence = float(request.form["valence"])
         print(valence)
+
         tempo = int(request.form["tempo"])
         print(tempo)
+
         key_type = int(request.form["key_type"])
         print(key_type)
+
         mode_type = request.form["mode_type"]
         print(mode_type)
-        time_sig_type = request.form["time_sig_type"]
-        print(time_sig_type)
 
         # Predictions
         prediction = predictions(
@@ -48,8 +56,7 @@ def predict():
             valence,
             tempo,
             key_type,
-            mode_type,
-            time_sig_type
+            mode_type
         )
         output = prediction[0]
 
