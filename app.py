@@ -62,8 +62,8 @@ def predict():
 
         results = ""
         if(output == 0):
-            results = "Not Top 10"
+            results = "Not Top 20"
         elif(output == 1):
-            results = "Top 10!"
+            results = "Top 20!"
 
         return render_template("results.html", results=results)
