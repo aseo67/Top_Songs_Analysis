@@ -89,11 +89,9 @@ CREATE TABLE song_ml (
 	liveness NUMERIC,
 	valence NUMERIC,
 	tempo NUMERIC,
-	duration_ms NUMERIC,
 	top_twenty NUMERIC, 
 	key_type NUMERIC, 
 	mode_type NUMERIC, 
-	time_sig_type NUMERIC, 
 	PRIMARY KEY ("index")
 );
 
