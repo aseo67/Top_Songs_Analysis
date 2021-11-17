@@ -82,9 +82,7 @@ CREATE TABLE song_ml (
 	index VARCHAR, 
 	danceability NUMERIC, 
 	energy NUMERIC,
-	key VARCHAR,
 	loudness NUMERIC,
-	mode VARCHAR, 
 	speechiness NUMERIC,
 	acousticness NUMERIC,
 	instrumentalness NUMERIC,
@@ -92,8 +90,10 @@ CREATE TABLE song_ml (
 	valence NUMERIC,
 	tempo NUMERIC,
 	duration_ms NUMERIC,
-	time_signature VARCHAR,
-	number_one VARCHAR, 
+	top_twenty NUMERIC, 
+	key_type NUMERIC, 
+	mode_type NUMERIC, 
+	time_sig_type NUMERIC, 
 	PRIMARY KEY ("index")
 );
 
