@@ -10,22 +10,37 @@
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous"
-    />
+    />f
 </head>
 <body>
     <div class="container">
-        <div class="jumbotron" text-align="center" style="background-color: #1db954">
+        <div class="jumbotron" text-align="center" style="background-color: #1db954" id="topOfPage">
             <h1 style="color: #ffffff">Spotify Songs Analysis</h1>
+            <br>
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1db954">
+                <a class="navbar-brand" style="color: #ffffff">Sections of Project:</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                  <div class="navbar-nav">
+                    <a class="nav-item nav-link" style="color: #ffffff" href="#background">Background</a>
+                    <a class="nav-item nav-link" style="color: #ffffff" href="#analysis">Analysis</a>
+                    <a class="nav-item nav-link" style="color: #ffffff" href="#model">Model</a>
+                  </div>
+                </div>
+              </nav>
         </div>
+
     </div>
 
-    <div class="container">
+    <div class="container" id="background">
         <h3><u>Project Background</u></h3>
         <p>Explanatory Paragraph</p>
         <br>
     </div>
 
-    <div class="container">
+    <div class="container" id="analysis">
         <h3><u>Exploratory Analysis</u></h3>
         <p>First Vis</p>
         <br>
@@ -37,7 +52,7 @@
         <br>
     </div>
 
-    <div class="container">
+    <div class="container" id="model">
         <h3><u>Machine Learning Model</u></h3>
         <p><b>Can we predict whether a song will be able to achieve a rank in the top 20 positions of the Spotify United States Top 200 chart, based on various song attributes/features?</b></p>
         <h4>Song Features/Attributes</h4>
@@ -48,9 +63,6 @@
             <label>Energy (0.0 - 1.0):</label>
             <input type="float" name="energy">
             <br>
-            <label>Loudness (-60dB - 0dB):</label>
-            <input type="number" min=-60 max=0 name="loudness">
-            <br>
             <label>Speechiness (0.0 - 1.0):</label>
             <input type="float" name="speechiness">
             <br>
@@ -59,9 +71,6 @@
             <br>
             <label>Instrumentalness (0.0 - 1.0):</label>
             <input type="float" name="instrumentalness">
-            <br>
-            <label>Liveness (0.0 - 1.0):</label>
-            <input type="float" name="liveness">
             <br>
             <label>Valence (0.0 - 1.0):</label>
             <input type="float" name="valence">

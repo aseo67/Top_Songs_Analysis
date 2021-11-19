@@ -17,9 +17,6 @@ def predict():
         energy = float(request.form["energy"])
         print(energy)
 
-        loudness = int(request.form["loudness"])
-        print(loudness)
-
         speechiness = float(request.form["speechiness"])
         print(speechiness)
 
@@ -28,9 +25,6 @@ def predict():
 
         instrumentalness = float(request.form["instrumentalness"])
         print(instrumentalness)
-
-        liveness = float(request.form["liveness"])
-        print(liveness)
 
         valence = float(request.form["valence"])
         print(valence)
@@ -48,11 +42,9 @@ def predict():
         prediction = predictions(
             danceability,
             energy,
-            loudness,
             speechiness,
             acousticness,
             instrumentalness,
-            liveness,
             valence,
             tempo,
             key_type,

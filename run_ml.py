@@ -11,11 +11,9 @@ from sqlalchemy import create_engine
 def predictions(
     danceability, 
     energy, 
-    loudness, 
     speechiness, 
     acousticness, 
     instrumentalness, 
-    liveness, 
     valence, 
     tempo, 
     key_type, 
@@ -59,11 +57,9 @@ def predictions(
     return rf_model.predict([[
         danceability, 
         energy, 
-        loudness, 
         speechiness, 
         acousticness, 
         instrumentalness, 
-        liveness, 
         valence, 
         tempo, 
         key_type, 
