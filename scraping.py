@@ -67,6 +67,7 @@ def scrape(date_urls):
     
     # Convert to pandas DataFrame
     spotify_df = pd.DataFrame(data, columns = ["song_id", "song_url", "song", "artist", "date", "position", "streams"])
+    spotify_df = spotify_df.set_index("song_id")
 
     # Save as csv file in same folder
     with open('./Resources/spotifytop200.csv', 'w') as x:

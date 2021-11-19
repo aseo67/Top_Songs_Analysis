@@ -1,11 +1,10 @@
 -- TABLE FOR RAW SPOTIFY TOP 200 CHART (U.S) DATA SCRAPE
 CREATE TABLE raw_scrape (
-	index VARCHAR, 
 	song_id VARCHAR,
 	song_url VARCHAR,
 	song VARCHAR,
 	artist VARCHAR, 
-	date VARCHAR, 
+	date DATE, 
 	position INT, 
 	streams VARCHAR
 )
