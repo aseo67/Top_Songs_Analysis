@@ -23,7 +23,7 @@ def predictions(
     from config import db_pswd
     engine = create_engine(f'postgresql://postgres:{db_pswd}@localhost:5432/project_spotify_db')
     # Load in dataframe for machine learning model from database
-    song_ml_rf_df = pd.read_sql('SELECT * FROM song_ml;', engine, index_col='index')
+    song_ml_rf_df = pd.read_sql('SELECT * FROM song_ml;', engine, index_col='song_id')
     song_ml_rf_df.head()
 
     # Assign preprocessed data into features and target arrays

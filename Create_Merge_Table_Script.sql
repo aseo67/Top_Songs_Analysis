@@ -90,7 +90,7 @@ ON (ta.song_id = f.song_id);
 
 -- CREATE TABLE FOR FINAL MACHINE LEARNING MODEL DATAFRAME
 CREATE TABLE song_ml (
-	index VARCHAR, 
+	song_id VARCHAR, 
 	danceability NUMERIC, 
 	energy NUMERIC,
 	speechiness NUMERIC,
@@ -98,10 +98,10 @@ CREATE TABLE song_ml (
 	instrumentalness NUMERIC,
 	valence NUMERIC,
 	tempo NUMERIC,
-	top_twenty NUMERIC, 
+	top_twenty VARCHAR, 
 	key_type NUMERIC, 
 	mode_type NUMERIC, 
-	PRIMARY KEY ("index")
+	PRIMARY KEY ("song_id")
 );
 
 -- SELECT ALL DATA SCRIPT FOR EACH TABLE
