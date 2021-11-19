@@ -1,0 +1,86 @@
+raw_scrape
+-
+song_id varchar pk
+song_url varchar
+song varchar
+artist varchar
+date date
+position int
+streams varchar
+
+clean_scrape
+-
+song_id varchar pk fk >-< raw_scrape.song_id
+song varchar
+artist varchar
+date date
+position int
+streams int
+
+features
+-
+song_id varchar pk fk -< clean_scrape.song_id
+danceability num
+energy num
+key varchar
+loudness num
+mode varchar
+speechiness num
+acousticness num
+instrumentalness num
+liveness num
+valence num
+tempo num
+duration_ms num
+time_signature varchar
+
+track_artist
+-
+song_id varchar pk fk -< clean_scrape.song_id
+song varchar
+artist varchar
+
+total_streams
+-
+song_id varchar pk fk -< clean_scrape.song_id
+streams int
+
+highest_position
+-
+song_id varchar pk fk -< clean_scrape.song_id
+position int
+
+songs
+-
+song_id varchar pk fk - track_artist.song_id
+song fk - track_artist.song
+artist fk - track_artist.artist
+streams fk - total_streams.streams
+position fk - highest_position.position
+danceability num fk - features.danceability
+energy num fk - features.energy
+key varchar fk - features.key
+loudness num fk - features.loudness
+mode varchar fk - features.mode
+speechiness num fk - features.speechiness
+acousticness num fk - features.acousticness
+instrumentalness num fk - features.instrumentalness
+liveness num fk - features.liveness
+valence num fk - features.valence
+tempo num fk - features.tempo
+duration_ms num fk - features.duration_ms
+time_signature varchar fk - features.time_signature
+
+song_ml
+-
+song_id varchar pk fk - songs.song_id
+danceability num fk - songs.danceability
+energy num fk - songs.energy
+speechiness num fk - songs.speechiness
+acousticness num fk - songs.acousticness
+instrumentalness num fk - songs.instrumentalness
+valence num fk - songs.valence
+tempo num fk - songs.tempo
+top_twenty num
+key_type num
+mode_type num
