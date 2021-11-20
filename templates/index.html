@@ -10,7 +10,7 @@
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous"
-    />f
+    />
 </head>
 <body>
     <div class="container">
@@ -36,22 +36,77 @@
 
     <div class="container" id="background">
         <h3><u>Project Background</u></h3>
-        <p>Explanatory Paragraph</p>
+        <p>Spotify provides a Top 200s Chart for various countries on a daily basis, based on users' streams. This analysis focuses on songs from the <b>United States</b> that have ranked in the Top 200s chart, since January 2021 through November 12, 2021.</p>
+        <p>Additional information regarding various song features are also available. Some of the features which have been included in this analysis are as follows:</p> 
+            <li><b>Acousticness:</b> A confidence measure from 0.0-1.0 of whether a track is acoustic, with 1.0 representing the highest confidence</li>
+            <li><b>Danceability:</b> A measure of how suitable a track is for dancing on a scale of 0.0-1.0, with 1.0 representing the most danceable</li>
+            <li><b>Duration (ms):</b> Track length in milliseconds</li>
+            <li><b>Energy:</b> A measure from 0.0-1.0 of track intensity/activity, with 1.0 representing the most "energetic"</li>
+            <li><b>Instrumentalness:</b> A measure from 0.0-1.0 predicting whether a track contains no vocals, with 1.0 representing the greatest likelihood the track contains no vocals</li>
+            <li><b>Key:</b> The key the track is in (C, C♯/D♭, D, D♯/E♭, etc.</li>
+            <li><b>Mode:</b> Modality (major or minor) of the track</li>
+            <li><b>Speechiness:</b> A measure from 0.0-1.0 detecting the presence of spoken words in track, with 1.0 representing the more exclusive speech-like recordings</li>
+            <li><b>Tempo:</b> Overall estimated tempo of track in beats per minute (BPM)</li>
+            <li><b>Valence:</b> A measure of 0.0-1.0 describing the musical positiveness conveyed by the track, with 1.0 reperesenting the most positive</li>
+        <br>
+        <p>Stream and ranking position data have been scraped from the Spotify charts, and the corresponding song features data has been pulled through the Spotify API request.</p>
         <br>
     </div>
 
     <div class="container" id="analysis">
         <h3><u>Exploratory Analysis</u></h3>
-        <p>First Vis</p>
-        <br>
-        <p>Second Vis</p>
-        <br>
-        <p>Third Vis</p>
-        <br>
-        <p>Fourth Vis</p>
-        <br>
-    </div>
+        <div class="row p-4">
+            <div class="card m-auto" style="width: 90%;">
+                <div class="card-body">
+                    <div id="chart1"></div>
+                    <p>asdf</p>
+                </div>
+                </div>
+            </div>
+            <br>
+            <div class="card m-auto" style="width: 90%;">
+                <div class="card-body">
+                    <div id="chart2"></div>
+                    <p>asdf</p>
+                </div>
+                </div>
+            </div>
+            <br>
+            <div class="card m-auto" style="width: 90%;">
+                <div class="card-body">
+                    <div id="chart3"></div>
+                    <p>asdf</p>
+                </div>
+                </div>
+            </div>
+            <br>
+            <div class="card m-auto" style="width: 90%;">
+                <div class="card-body">
+                    <div id="chart4"></div>
+                    <p>asdf</p>
+                </div>
+                </div>
+            </div>
+            <br>
+        </div>    
 
+        <!-- plotly CDN -->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script type="text/javascript">
+            var graphs1 = {{ graph1JSON | safe }};
+            Plotly.plot("chart1", graphs1,{});
+
+            var graphs2 = {{ graph2JSON | safe }};
+            Plotly.plot("chart2", graphs2,{});
+
+            var graphs3 = {{ graph3JSON | safe }};
+            Plotly.plot("chart3", graphs3,{});
+
+            var graphs4 = {{ graph4JSON | safe }};
+            Plotly.plot("chart4", graphs4,{});
+        </script>
+    </div>
+    
     <div class="container" id="model">
         <h3><u>Machine Learning Model</u></h3>
         <p><b>Can we predict whether a song will be able to achieve a rank in the top 20 positions of the Spotify United States Top 200 chart, based on various song attributes/features?</b></p>
@@ -102,8 +157,8 @@
             <br>
             <br>
             <input type="submit">
+            <br>
         </form>
     </div>
-    
 </body>
 </html>
