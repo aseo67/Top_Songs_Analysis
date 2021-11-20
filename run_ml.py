@@ -1,7 +1,8 @@
 # Import dependencies
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-from imblearn.over_sampling import SMOTE
+from collections import Counter
+from imblearn.combine import SMOTEENN
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sqlalchemy import create_engine
@@ -15,23 +16,27 @@ def predictions(
     valence, 
     tempo, 
     key_type, 
-    mode_type, 
+    mode_type 
 ):
     # Set up connection to database
     from config import db_pswd
     engine = create_engine(f'postgresql://postgres:{db_pswd}@localhost:5432/project_spotify_db')
     # Load in dataframe for machine learning model from database
-    song_ml_rf_df = pd.read_sql('SELECT * FROM song_ml;', engine, index_col="song_id")
+    song_ml_df = pd.read_sql('SELECT * FROM song_ml;', engine, index_col="song_id")
 
     # Assign preprocessed data into features and target arrays
-    y = song_ml_rf_df["top_twenty"].ravel()
-    X = song_ml_rf_df.drop(["top_twenty"], 1)
+    y = song_ml_df["top_twenty"].ravel()
+    X = song_ml_df.drop(["top_twenty"], 1)
+    print(Counter(y))
 
     # Split preprocessed data into training and testing datasets
     X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1)
+    print(Counter(y))
 
-    # Data resampled with SMOTE
-    X_resampled, y_resampled = SMOTE(random_state=1, sampling_strategy='auto').fit_resample(X_train, y_train)
+    ## Data resampled with SMOTEENN
+    smote_enn = SMOTEENN(random_state=1)
+    X_resampled, y_resampled = smote_enn.fit_resample(X, y)
+    print(Counter(y_resampled))
 
     # Create StandardScaler instances
     scaler = StandardScaler()

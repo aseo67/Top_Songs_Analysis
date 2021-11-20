@@ -36,7 +36,7 @@
 
     <div class="container" id="background">
         <h3><u>Project Background</u></h3>
-        <p>Spotify provides a Top 200s Chart for various countries on a daily basis, based on users' streams. This analysis focuses on songs from the <b>United States</b> that have ranked in the Top 200s chart, since <b>January 2021 through November 17, 2021</b>.</p>
+        <p>Spotify provides a Top 200s Chart for various countries on a daily basis, based on users' streams. This analysis focuses on songs from the <b>United States</b> that have ranked in the Top 200s chart, since <b>January 1, 2021 through November 17, 2021</b>.</p>
         <p>Additional information regarding various song features are also available. Some of the features which have been included in this analysis are as follows:</p> 
             <li><b>Acousticness:</b> A confidence measure from 0.0-1.0 of whether a track is acoustic, with 1.0 representing the highest confidence</li>
             <li><b>Danceability:</b> A measure of how suitable a track is for dancing on a scale of 0.0-1.0, with 1.0 representing the most danceable</li>
@@ -112,7 +112,8 @@
     <div class="container" id="model">
         <h3><u>Machine Learning Model</u></h3>
         <p><b>Can we predict whether a song will be able to achieve a rank in the top 20 positions of the Spotify United States Top 200 chart, based on various song attributes/features?</b></p>
-        <h4>Song Features/Attributes</h4>
+        <br>
+        <p><u>Song Features/Attributes</u></p>
         <form action="/predict" method="POST">
             <label>Danceability (0.0 - 1.0):</label>
             <input type="float" name="danceability">
@@ -160,5 +161,7 @@
             <input type="submit">
         </form>
     </div>
+    <br>
+    <br>
 </body>
 </html>
