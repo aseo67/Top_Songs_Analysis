@@ -30,7 +30,7 @@ def index():
         color='artist', 
         title='Top 10 Streamed Songs of 2021', 
         labels={'song':'Song', 'streams':'Number of Streams', 'artist':'Artist'}
-    ).update_xaxes(categoryorder='total descending')
+    ).update_xaxes(categoryorder='total descending', tickangle=45)
     # Encode chart as json
     graph1JSON = json.dumps(fig1, cls=plotly.utils.PlotlyJSONEncoder)
 
@@ -48,7 +48,7 @@ def index():
         y='count_of_charted_songs',
         title='Artists with Most Charted Songs of 2021',
         labels={'artist':'Artist', 'count_of_charted_songs':'Number of Charted Songs'}
-    )
+    ).update_xaxes(tickangle=45)
     # Encode chart as json
     graph2JSON = json.dumps(fig2, cls=plotly.utils.PlotlyJSONEncoder)
 
@@ -65,7 +65,7 @@ def index():
         y='streams',
         title='Artists with Most Streams',
         labels={'artist':'Artist', 'streams':'Total Number of Streams'}
-    )
+    ).update_xaxes(tickangle=45)
     # Encode chart as json
     graph3JSON = json.dumps(fig3, cls=plotly.utils.PlotlyJSONEncoder)
 
@@ -84,7 +84,7 @@ def index():
         y='count_of_number_ones',
         title='Artists with Most #1 Hits',
         labels={'artist':'Artist', 'count_of_number_ones':'Number of #1 Hits'}
-    ).update_yaxes(nticks=4)
+    ).update_yaxes(nticks=4).update_xaxes(tickangle=45)
     # Encode chart as json
     graph4JSON = json.dumps(fig4, cls=plotly.utils.PlotlyJSONEncoder)
 

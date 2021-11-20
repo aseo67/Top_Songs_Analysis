@@ -18,7 +18,7 @@
             <h1 style="color: #ffffff">Spotify Songs Analysis</h1>
             <br>
             <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1db954">
-                <a class="navbar-brand" style="color: #ffffff">Sections of Project:</a>
+                <a class="navbar-brand" style="color: #ffffff">Menu (Project Sections):</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -36,7 +36,7 @@
 
     <div class="container" id="background">
         <h3><u>Project Background</u></h3>
-        <p>Spotify provides a Top 200s Chart for various countries on a daily basis, based on users' streams. This analysis focuses on songs from the <b>United States</b> that have ranked in the Top 200s chart, since January 2021 through November 12, 2021.</p>
+        <p>Spotify provides a Top 200s Chart for various countries on a daily basis, based on users' streams. This analysis focuses on songs from the <b>United States</b> that have ranked in the Top 200s chart, since <b>January 2021 through November 17, 2021</b>.</p>
         <p>Additional information regarding various song features are also available. Some of the features which have been included in this analysis are as follows:</p> 
             <li><b>Acousticness:</b> A confidence measure from 0.0-1.0 of whether a track is acoustic, with 1.0 representing the highest confidence</li>
             <li><b>Danceability:</b> A measure of how suitable a track is for dancing on a scale of 0.0-1.0, with 1.0 representing the most danceable</li>
@@ -49,7 +49,9 @@
             <li><b>Tempo:</b> Overall estimated tempo of track in beats per minute (BPM)</li>
             <li><b>Valence:</b> A measure of 0.0-1.0 describing the musical positiveness conveyed by the track, with 1.0 reperesenting the most positive</li>
         <br>
-        <p>Stream and ranking position data have been scraped from the Spotify charts, and the corresponding song features data has been pulled through the Spotify API request.</p>
+        <p>Stream and ranking position data have been scraped from the Spotify charts, and the corresponding song features data  (as outlined above) has been pulled through the Spotify API request.</p>
+        <p>Various insights have been analyzed through this data in the "Exploratory Analysis" section.</p>
+        <p>Additionally, a machine learning model has been built to predict whether a song can be predicted to rank within the Top 20 positions of the United States charts, depending on various musical attributes.</p>
         <br>
     </div>
 
@@ -58,33 +60,33 @@
         <div class="row p-4">
             <div class="card m-auto" style="width: 90%;">
                 <div class="card-body">
+                    <h4>What songs have accumulated the most streams in 2021 so far?</h4>
+                    <p>So far in 2021, Dua Lipa's song, "Levitating (feat. DaBaby)", has amassed the most streams of ~244M.</p>
                     <div id="chart1"></div>
-                    <p>asdf</p>
-                </div>
                 </div>
             </div>
             <br>
             <div class="card m-auto" style="width: 90%;">
                 <div class="card-body">
+                    <h4>Which artists have the most songs that have ranked in the Top 200s chart so far in 2021?</h4>
+                    <p>Taylor Swift has the most songs on the Top 200s chart so far in 2021, with 86 charted songs.</p>
                     <div id="chart2"></div>
-                    <p>asdf</p>
-                </div>
                 </div>
             </div>
             <br>
             <div class="card m-auto" style="width: 90%;">
                 <div class="card-body">
+                    <h4>Which artists have accumulated the most total streams in 2021 so far?</h4>
+                    <p>Drake has the most total streams across his charted songs in 2021, with ~1.0B streams.</p>
                     <div id="chart3"></div>
-                    <p>asdf</p>
-                </div>
                 </div>
             </div>
             <br>
             <div class="card m-auto" style="width: 90%;">
                 <div class="card-body">
+                    <h4>Which artists have the most #1 hits in 2021 so far?</h4>
+                    <p>Drake and J.Cole are tied with the highest number of #1 hits in 2021 so far, with three #1 hits each.</p>
                     <div id="chart4"></div>
-                    <p>asdf</p>
-                </div>
                 </div>
             </div>
             <br>
