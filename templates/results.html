@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify Songs Analysis: Model Results</title>
+    <title>Spotify Songs Analysis</title>
     <link 
         rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -19,10 +19,14 @@
         </div>
     </div>
     <div class="container">
-        <h3><u>Model Results</u></h3>
-        {{results}}
-        <br>
+        <div class="row p-4">
+            <div class="card m-auto" style="width: 90%;">
+                <div class="card-body">
+                    <h3><u>Model Results:</u></h3>
+                    {{results}}
+                </div>
+            </div>
+        </div> 
     </div>
-
 </body>
 </html>

@@ -7,7 +7,6 @@ from bs4 import BeautifulSoup as soup
 import pandas as pd
 import datetime as dt
 from webdriver_manager.chrome import ChromeDriverManager
-import psycopg2
 
 # Get list of dates to use in url strings
 dates = []

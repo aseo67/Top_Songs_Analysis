@@ -31,7 +31,7 @@ instrumentalness num
 liveness num
 valence num
 tempo num
-duration_ms num
+duration_ms int
 time_signature varchar
 
 track_artist

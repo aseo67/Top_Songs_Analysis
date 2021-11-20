@@ -115,7 +115,7 @@ def predict():
         tempo = int(request.form["tempo"])
         print(tempo)
 
-        key_type = int(request.form["key_type"])
+        key_type = request.form["key_type"]
         print(key_type)
 
         mode_type = request.form["mode_type"]
@@ -134,11 +134,13 @@ def predict():
             mode_type
         )
         output = prediction[0]
+        print(output)
 
         results = ""
         if(output == 0):
             results = "Not Top 20"
-        elif(output == 1):
+        else:
             results = "Top 20!"
+        print(results)
 
         return render_template("results.html", results=results)

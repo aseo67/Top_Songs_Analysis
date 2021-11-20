@@ -1,11 +1,9 @@
 # Import dependencies
 import pandas as pd
-from sklearn.preprocessing import StandardScaler, LabelEncoder
-from collections import Counter
+from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import SMOTE
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
 from sqlalchemy import create_engine
 
 def predictions(
@@ -23,8 +21,7 @@ def predictions(
     from config import db_pswd
     engine = create_engine(f'postgresql://postgres:{db_pswd}@localhost:5432/project_spotify_db')
     # Load in dataframe for machine learning model from database
-    song_ml_rf_df = pd.read_sql('SELECT * FROM song_ml;', engine, index_col='song_id')
-    song_ml_rf_df.head()
+    song_ml_rf_df = pd.read_sql('SELECT * FROM song_ml;', engine, index_col="song_id")
 
     # Assign preprocessed data into features and target arrays
     y = song_ml_rf_df["top_twenty"].ravel()
@@ -63,6 +60,6 @@ def predictions(
         valence, 
         tempo, 
         key_type, 
-        mode_type, 
+        mode_type 
     ]])
 

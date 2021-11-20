@@ -93,17 +93,17 @@
         <!-- plotly CDN -->
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <script type="text/javascript">
-            var graphs1 = {{ graph1JSON | safe }};
-            Plotly.plot("chart1", graphs1,{});
+            var graphs1 = {{ graph1JSON | safe }}
+            Plotly.plot("chart1", graphs1,{})
 
-            var graphs2 = {{ graph2JSON | safe }};
-            Plotly.plot("chart2", graphs2,{});
+            var graphs2 = {{ graph2JSON | safe }}
+            Plotly.plot("chart2", graphs2,{})
 
-            var graphs3 = {{ graph3JSON | safe }};
-            Plotly.plot("chart3", graphs3,{});
+            var graphs3 = {{ graph3JSON | safe }}
+            Plotly.plot("chart3", graphs3,{})
 
-            var graphs4 = {{ graph4JSON | safe }};
-            Plotly.plot("chart4", graphs4,{});
+            var graphs4 = {{ graph4JSON | safe }}
+            Plotly.plot("chart4", graphs4,{})
         </script>
     </div>
     
@@ -155,9 +155,7 @@
                 <option value=1>Minor</option>
             </select>
             <br>
-            <br>
             <input type="submit">
-            <br>
         </form>
     </div>
 </body>

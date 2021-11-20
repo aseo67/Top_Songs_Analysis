@@ -23,7 +23,7 @@ CREATE TABLE features (
 	liveness NUMERIC, 
 	valence NUMERIC, 
 	tempo NUMERIC, 
-	duration_ms NUMERIC, 
+	duration_ms INT, 
 	time_signature VARCHAR, 
 	PRIMARY KEY ("song_id")
 );
