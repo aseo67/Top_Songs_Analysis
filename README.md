@@ -54,7 +54,9 @@ Data Analytics Bootcamp 2021 Final Project
 - Which songs are most danceable? Most energetic? Most positive-sounding (high valence)? 
 - Can we predict if a song can break into the top 20 positions, based on the song's musical features?
 
-**Data Source:** [Spotify Charts](https://spotifycharts.com/regional/us/daily/)
+**Data Source:** 
+[Spotify Charts](https://spotifycharts.com/regional/us/daily/)
+[Spotify - Web API - Audio Features](https://developer.spotify.com/discover/)
 - Top 200 Charts, Daily
 - Country: United States
 - Timeframe: Jan. 1, 2021 - Nov. 17, 2021
