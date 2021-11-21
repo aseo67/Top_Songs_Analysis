@@ -27,16 +27,15 @@ def predictions(
     # Assign preprocessed data into features and target arrays
     y = song_ml_df["top_twenty"].ravel()
     X = song_ml_df.drop(["top_twenty"], 1)
-    print(Counter(y))
-
+    Counter(y)
     # Split preprocessed data into training and testing datasets
     X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1)
-    print(Counter(y))
+    Counter(y_train)
 
-    ## Data resampled with SMOTEENN
+    # Data resampled with SMOTEENN
     smote_enn = SMOTEENN(random_state=1)
-    X_resampled, y_resampled = smote_enn.fit_resample(X, y)
-    print(Counter(y_resampled))
+    X_resampled, y_resampled = smote_enn.fit_resample(X_train, y_train)
+    Counter(y_resampled)
 
     # Create StandardScaler instances
     scaler = StandardScaler()
