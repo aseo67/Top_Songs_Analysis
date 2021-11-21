@@ -94,31 +94,31 @@ def index():
 def predict():
     # Get data from POST request
     if request.method == "POST":
-        danceability = request.form["danceability"]
+        danceability = float(request.form["danceability"])
         print(danceability)
 
-        energy = request.form["energy"]
+        energy = float(request.form["energy"])
         print(energy)
 
-        speechiness = request.form["speechiness"]
+        speechiness = float(request.form["speechiness"])
         print(speechiness)
 
-        acousticness = request.form["acousticness"]
+        acousticness = float(request.form["acousticness"])
         print(acousticness)
 
-        instrumentalness = request.form["instrumentalness"]
+        instrumentalness = float(request.form["instrumentalness"])
         print(instrumentalness)
 
-        valence = request.form["valence"]
+        valence = float(request.form["valence"])
         print(valence)
 
-        tempo = request.form["tempo"]
+        tempo = int(request.form["tempo"])
         print(tempo)
 
-        key_type = request.form["key_type"]
+        key_type = int(request.form["key_type"])
         print(key_type)
 
-        mode_type = request.form["mode_type"]
+        mode_type = int(request.form["mode_type"])
         print(mode_type)
 
         # Predictions
@@ -133,13 +133,13 @@ def predict():
             key_type,
             mode_type
         )
-        output = prediction[0]
+        output = int(prediction[0])
         print(output)
 
         results = ""
-        if(output == '0'):
+        if(output == 0):
             results = "Not Top 20."
-        elif(output == '1'):
+        elif(output == 1):
             results = "Top 20!"
         print(results)
 
