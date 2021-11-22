@@ -1,4 +1,4 @@
-Machine learning model (in README & Presentation)
+Machine learning model (in README & Flask)
 ✓ Description of data preprocessing 
 ✓ Description of feature engineering and the feature selection, including the team's decision-making process 
 ✓ Description of how data was split into training and testing sets 
