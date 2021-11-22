@@ -19,10 +19,11 @@ Dashboard/Flask App
 Data Analytics Bootcamp 2021 Final Project
 **Topic:** Spotify Top 200 Charts Analysis 
 **Project Questions:**
+- How many songs have entered the Top 200s chart since th start of 2021?
 - What songs have the most streams?
+- What songs have been #1 on the charts? 
 - Which artists have the most streams?
 - Which artists have the most songs on the chart?
-- What songs have been #1 on the charts? 
 - Which artists have the most #1 hits?
 - Which songs are most danceable? Most energetic? Most positive-sounding (high valence)? 
 - Can we predict if a song can break into the top 20 positions, based on the song's musical features?
@@ -93,7 +94,7 @@ Data Analytics Bootcamp 2021 Final Project
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_TotalStreamsDf.png)
     - The highest position for each song was determined and saved as a separate dataframe ("highest_position_df").
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_HighestPositionDf.png)
-    - Each indivdual track name and corresponding artist name was saved into its own dataframe ("track_artist_df")
+    - Each individual track name and corresponding artist name was saved into its own dataframe ("track_artist_df")
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_TrackArtistDf.png)
 4. All dataframes were saved in the database. 
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_UploadToDatabase.png)
@@ -103,8 +104,40 @@ Data Analytics Bootcamp 2021 Final Project
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_FinalMergedTable.png)
 
 ## Exploratory Analysis
-
-![Screenshot]()
+(see _Top_Songs_Analysis.Exploratory.ipynb_ file)
+1. First, the "songs_df" table was loaded from the database
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_LoadSongDf.png)
+2. **Question 1) How many songs have entered the Top 200s chart since the beginning of 2021?**
+    - The total number of unique songs on the chart since Jan. 2021 was determined.
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_NumOfSongs.png)
+3. **Question 2) What songs have the most streams?**
+    - The songs are reordered from most to least streams to identify those with songs with the highest number of streams. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_TopStreamingSongs.png)
+    - A visualization/bar chart has been created to show the top ten songs with the most streams. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_TopTenStreamingSongs.png)
+    - The maximum, minimum, and average streams across songs have been determined. The song with the most streams is "drivers license" by Olivia Rodrigo, while the charted song with the least streams is "Monster Mash" by Bob "Boris" Pickett, The Crypt-Kickers.
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_SummaryStatsForTopSongs.png)
+4. **Question 3) How many songs have reached #1 on the Top 200s chart since the beginning of 2021?**
+    - The total number of unique songs to reach a #1 position on the chart since Jan. 2021 was determined.
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_NumberOneSongs.png)
+5. **Question 4) Which artists have the most streams?**
+    - Total streams for each artist have been aggregated, and ordered from most to least. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_TopStreamArtists.png)
+    - The top ten streaming artists have been charted in the below visualization. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_TopTenStreamArtists.png)
+6. **Question 5) How many artists have entered the charts?**
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_TotalChartingArtists.png)
+7. **Question 6) Which artists have the most songs to have entered on the chart this year?**
+    - Artists' count of charted of songs have been aggregated and reordered from most to least. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_TopChartingArtists.png)
+    - The top ten charting artists have been charted in the below visualization. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_TopTenChartingArtists.png)
+8. **Question 7) Which artists have the most #1 hit songs? (i.e. songs to have reached #1 on the charts)****
+    - Artists' count of #1 hit songs have been aggregated and reordered from most to least. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_TopHitsArtists.png)
+    - The top ten artists with the most #1 hits have been charted in the visualization below. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_TopTenHitsArtists.png)
+9. **Which songs are most danceable? Most energetic? Most positive-sounding (high valence)?**
 
 ## Machine Learning Model
 
