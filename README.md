@@ -75,13 +75,32 @@ Data Analytics Bootcamp 2021 Final Project
     - The API request is conducted and the corresponding audio features data is received as a json in the jupyter notebook, which is then converted into a pandas dataframe for easier cleaning. 
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/1_DataExtract_AudioFeatAPI.png)
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/1_DataExtract_APIReqToPandasDf.png)
-
-3.  
-![Screenshot]()
-
+    
 ## Data Cleaning
-
-![Screenshot]()
+(continued on _Top_Songs_Analysis.DataLoading.ipynb_ file)
+1. First, the "features_df" was cleaned.
+    - Unnecessary columns were removed, and appropriate values for the 'key' and 'mode' columns were relabeled for clarity. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_FeaturesDfDropCol.png)
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_FeaturesReplaceVal.png)
+    - Data types were checked and fixed, along with checking for any null values in the table.
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_FeaturesCheckDataTypeAndNulls.png)
+    - The final table was saved as a csv.
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_SaveFeaturesDfCSV.png)
+2. Similarly, the "scrape_df" was also cleaned. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_ScrapeDfClean.png)
+3. Select focus columns were separated and compiled into its own dataframes - to be used in merging into a final dataframe later. 
+    - The total streams for each song were aggregated across all dates into a separate dataframe ("total_streams_df"). 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_TotalStreamsDf.png)
+    - The highest position for each song was determined and saved as a separate dataframe ("highest_position_df").
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_HighestPositionDf.png)
+    - Each indivdual track name and corresponding artist name was saved into its own dataframe ("track_artist_df")
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_TrackArtistDf.png)
+4. All dataframes were saved in the database. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_UploadToDatabase.png)
+6. Dataframes were joined together into a final, single dataframe to use for analysis later. 
+    - SQL script was used to join the tables within the database.
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_MergeTables_SQL.png)
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_FinalMergedTable.png)
 
 ## Exploratory Analysis
 
