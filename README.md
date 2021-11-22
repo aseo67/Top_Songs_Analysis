@@ -1,15 +1,3 @@
-Main branch should include: 
-✓ All code necessary to perform exploratory analysis 
-✓ All code necessary to complete machine learning portion of project 
-✓ Any images that have been created (at least three) 
-✓ Requirements.txt file
-
-README.md must include: 
-✓ Cohesive, structured outline of the project (this may include images, but
-should be easy to follow and digest) 
-✓ Link to dashboard (or link to video of dashboard demo) - Flask App
-✓ Link to Google Slides presentation
-
 Machine learning model (in README & Presentation)
 ✓ Description of data preprocessing 
 ✓ Description of feature engineering and the feature selection, including the team's decision-making process 
@@ -23,22 +11,7 @@ Machine learning model (in README & Presentation)
 
 Dashboard/Flask App
 ✓ Presents a data story that is logical and easy to follow
-✓ Images from the initial analysis 
-✓ Data (images or report) from the machine learning task 
-✓ At least one interactive element (machine learning predictions)
-
-Presentation/Slides
-✓ Selected topic 
-✓ Reason why they selected their topic 
-✓ Description of their source of data 
-✓ Questions they hope to answer with the data 
-✓ Description of the data exploration phase of the project 
-✓ Description of the analysis phase of the project 
-✓ Technologies, languages, tools, and algorithms used throughout the project 
-✓ Result of analysis 
-✓ Recommendation for future analysis 
-✓ Anything the team would have done differently 
-
+✓ Data (images or report) from the machine learning task
 
 
 
@@ -60,9 +33,14 @@ Data Analytics Bootcamp 2021 Final Project
   - Country: United States
   - Timeframe: Jan. 1, 2021 - Nov. 17, 2021
   - Source Link: [Spotify Charts](https://spotifycharts.com/regional/us/daily/)
-  - Scraped Data File: [spotifytop200.csv](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Resources/spotifytop200.csv)
+  - Raw Scraped Data File: [spotifytop200.csv](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Resources/spotifytop200.csv)
+  - Raw API Request Data for Song Features: []()
 - Corresponding Spotify audio features data for scraped tracks
   - Source Link (API): [Spotify - Web API - Audio Features](https://developer.spotify.com/discover/)
+
+**Final Presentation Links**
+- Google Slides: [link]()
+- Presentation Recording: [link]()
 
 **Final Deliverables**
 - Data Scraping File: [scraping.py](https://github.com/aseo67/Top_Songs_Analysis/blob/main/scraping.py)
@@ -79,7 +57,11 @@ Data Analytics Bootcamp 2021 Final Project
   - [run_ml.py](https://github.com/aseo67/Top_Songs_Analysis/blob/main/run_ml.py)
 
 ## Data Extraction
-
+1. First, data was extracted from Spotify using python script to automatically read through the Spotify United States daily Top 200 chart tracks, their ranks, and streams via the _scraping.py_ file. 
+  - This script runs through each date/page since January 1, 2021 through November 17, 2021 (two days prior to the date of scraping). 
+  - The song info for each day's charted songs - for track title, artist, song url (on Spotify), chart rank/positino, # of streams, and date of chart - were scraped. 
+  - The resulting data is saved as a csv file (_spotifytop200.csv_, located in the Resources folder), and uploaded to the postgreSQL database. 
+2. 
 ![Screenshot]()
 
 ## Data Cleaning
