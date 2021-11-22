@@ -39,7 +39,8 @@ Data Analytics Bootcamp 2021 Final Project
   - Source Link (API): [Spotify - Web API - Audio Features](https://developer.spotify.com/discover/)
 
 **Final Presentation Links**
-- Google Slides: [link]()
+- Google Slides: [link](https://docs.google.com/presentation/d/1-EKrs4luwS2UCQAzGb-Srn8esqcOBt605LFtJNwqsL4/edit?usp=sharing)
+- Google Slides (PPT version) [link]()
 - Presentation Recording: [link]()
 
 **Final Deliverables**
@@ -59,20 +60,21 @@ Data Analytics Bootcamp 2021 Final Project
 ## Data Extraction
 1. First, data was extracted from Spotify using python script to automatically read through the Spotify United States daily Top 200 chart tracks, their ranks, and streams via the _scraping.py_ file. 
     - This script runs through each date/page since January 1, 2021 through November 17, 2021 (two days prior to the date of scraping). 
-    ![Screenshot]()
-    - The song info for each day's charted songs - for track title, artist, song url (on Spotify), chart rank/positino, # of streams, and date of chart - were scraped. 
-    ![Screenshot]()
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/1_DataExtract_ListDatesToScrape.png)
+    - The song info for each day's charted songs - for track title, artist, song url (on Spotify), chart rank/position, # of streams, and date of chart - were scraped. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/1_DataExtract_ScrapeFunction.png)
     - The resulting data is saved as a csv file (_spotifytop200.csv_, located in the Resources folder), and uploaded to the postgreSQL database as the "raw_scrape" table. 
-    ![Screenshot]()
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/1_DataExtract_RawScrapeConvertSaveUpload.png)
 
 2. Next, the corresponding audio features data was pulled using a Spotify API request (see _Top_Songs_Analysis.DataLoading.ipynb_ file for all data loading/cleaning code).
     - First, the "raw_scrape" table was sourced into the jupyter notebook as "scrape_df" from the postgreSQL database. 
-    ![Screenshot]()
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/1_DataExtract_RawScrapeAsPandasDf.png)
     - A list of song ids was created from the data in this dataframe, which is then split into groups of 100 or less. This is so API requests can be made in batches of 100 song ids (limit for this API request).
-    ![Screenshot]()
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/1_DataExtract_ListSongIDsForAPI.png)
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/1_DataExtract_BatchSongIDs.png)
     - The API request is conducted and the corresponding audio features data is received as a json in the jupyter notebook, which is then converted into a pandas dataframe for easier cleaning. 
-    ![Screenshot]()
-    ![Screenshot]()
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/1_DataExtract_AudioFeatAPI.png)
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/1_DataExtract_APIReqToPandasDf.png)
 
 3.  
 ![Screenshot]()
