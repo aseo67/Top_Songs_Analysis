@@ -57,6 +57,7 @@
 
     <div class="container" id="analysis">
         <h3><u>Exploratory Analysis</u></h3>
+        <h5><b>Song & Artist Analysis</b></h5>
         <div class="row p-4">
             <div class="card m-auto" style="width: 90%;">
                 <div class="card-body">
@@ -90,7 +91,65 @@
                 </div>
             </div>
             <br>
-        </div>    
+        </div>  
+        <h5><b>Song Audio Features Analysis</b></h5>
+        <div class="row p-4">
+            <div class="card m-auto" style="width: 90%;">
+                <div class="card-body">
+                    <h4>What songs are most 'danceable'?</h4>
+                    <p>So far in 2021, the most 'danceable' song is "NEO" by Aminé, with a 'danceability' value of ~0.98.</p>
+                    <div id="chart5"></div>
+                </div>
+            </div>
+            <br>
+            <div class="card m-auto" style="width: 90%;">
+                <div class="card-body">
+                    <h4>What songs are most 'energetic'?</h4>
+                    <p>So far, the most 'energetic' song is "The Chapeltown Rag" by Slipknot, with a 'energy' value of ~1.00.</p>
+                    <div id="chart6"></div>
+                </div>
+            </div>
+            <br>
+            <div class="card m-auto" style="width: 90%;">
+                <div class="card-body">
+                    <h4>What songs have the highest amount of 'speechiness'?</h4>
+                    <p>So far in 2021, the most 'speechy' song is "Road Rage" by Young Thug, with a 'speechiness' value of ~0.89.</p>
+                    <div id="chart7"></div>
+                </div>
+            </div>
+            <br>
+            <div class="card m-auto" style="width: 90%;">
+                <div class="card-body">
+                    <h4>What songs are most 'acoustic'?</h4>
+                    <p>So far in 2021, the most 'acoustic' song is "Lost in Time" by Ski Mask the Slump God, with an 'acousticness' value of ~0.98.</p>
+                    <div id="chart8"></div>
+                </div>
+            </div>
+            <br>
+            <div class="card m-auto" style="width: 90%;">
+                <div class="card-body">
+                    <h4>What songs are most 'instrumental'?</h4>
+                    <p>The song with the higehst amount of 'instrumentalness' is "Aegean" by Solkatt, with a 'instrumentalness' value ~0.95.</p>
+                    <div id="chart9"></div>
+                </div>
+            </div>
+            <br>
+            <div class="card m-auto" style="width: 90%;">
+                <div class="card-body">
+                    <h4>What songs are most positive (i.e., have the highest valence)?</h4>
+                    <p>So far in 2021, the most 'positive'-sounding songs are "Glory Days" by Bruce Springsteen and "Earth, Wind & Fire" by September, tied with a 'valence' value of ~0.98.</p>
+                    <div id="chart10"></div>
+                </div>
+            </div>
+            <br>
+            <div class="card m-auto" style="width: 90%;">
+                <div class="card-body">
+                    <h4>What songs are the fastest?</h4>
+                    <p>So far, the fastest (highest tempo) song is "State of Grace (Acoustic Version) (Taylor's Version)" by Taylor Swift with a BPM of ~209.</p>
+                    <div id="chart11"></div>
+                </div>
+            </div>
+        </div>  
 
         <!-- plotly CDN -->
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -106,6 +165,27 @@
 
             var graphs4 = {{ graph4JSON | safe }}
             Plotly.plot("chart4", graphs4,{})
+
+            var graphs5 = {{ graph5JSON | safe }}
+            Plotly.plot("chart5", graphs5,{}) 
+
+            var graphs6 = {{ graph6JSON | safe }}
+            Plotly.plot("chart6", graphs6,{})
+
+            var graphs7 = {{ graph7JSON | safe }}
+            Plotly.plot("chart7", graphs7,{})
+
+            var graphs8 = {{ graph8JSON | safe }}
+            Plotly.plot("chart8", graphs8,{})
+
+            var graphs9 = {{ graph9JSON | safe }}
+            Plotly.plot("chart9", graphs9,{})
+
+            var graphs10 = {{ graph10JSON | safe }}
+            Plotly.plot("chart10", graphs10,{})
+
+            var graphs11 = {{ graph11JSON | safe }}
+            Plotly.plot("chart11", graphs11,{})
         </script>
     </div>
     

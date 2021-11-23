@@ -88,7 +88,131 @@ def index():
     # Encode chart as json
     graph4JSON = json.dumps(fig4, cls=plotly.utils.PlotlyJSONEncoder)
 
-    return render_template("index.html", graph1JSON=graph1JSON, graph2JSON=graph2JSON, graph3JSON=graph3JSON, graph4JSON=graph4JSON)
+    # Creat dataframe for top 'danceability' songs
+    dance_df = song_df[['artist', 'song', 'danceability']]
+    dance_df = dance_df.sort_values(['danceability'], ascending=False)
+    toptendanceable = dance_df[:10]
+    # Create visualization 5: top 'danceability' songs
+    fig5 = px.bar(
+        toptendanceable, 
+        x='song', 
+        y='danceability',
+        title='Top Ten Danceable Songs',
+        hover_data=['artist'],
+        labels={'song':'Song', 'artist':'Artist', 'danceability': 'Danceability'}
+    ).update_xaxes(tickangle=45)
+    # Encode chart as json
+    graph5JSON = json.dumps(fig5, cls=plotly.utils.PlotlyJSONEncoder)
+
+    # Creat dataframe for top 'energy' songs
+    energy_df = song_df[['artist', 'song', 'energy']]
+    energy_df = energy_df.sort_values(['energy'], ascending=False)
+    toptenenergy = energy_df[:10]
+    # Create visualization 6: top 'energy' songs
+    fig6 = px.bar(
+        toptenenergy, 
+        x='song', 
+        y='energy',
+        title='Top Ten Energetic Songs',
+        hover_data=['artist'],
+        labels={'song':'Song', 'artist':'Artist', 'energy': 'Energy'}
+    ).update_xaxes(tickangle=45)
+    # Encode chart as json
+    graph6JSON = json.dumps(fig6, cls=plotly.utils.PlotlyJSONEncoder)
+
+    # Creat dataframe for top 'speechy' songs
+    speech_df = song_df[['artist', 'song', 'speechiness']]
+    speech_df = speech_df.sort_values(['speechiness'], ascending=False)
+    toptenspeechy = speech_df[:10]
+    # Create visualization 7: top 'speechy' songs
+    fig7 = px.bar(
+        toptenspeechy, 
+        x='song', 
+        y='speechiness',
+        title='Top Ten "Speechy" Songs',
+        hover_data=['artist'],
+        labels={'song':'Song', 'artist':'Artist', 'speechiness': 'Speechiness'}
+    ).update_xaxes(tickangle=45)
+    # Encode chart as json
+    graph7JSON = json.dumps(fig7, cls=plotly.utils.PlotlyJSONEncoder)
+
+    # Create dataframe for top 'acoustic' songs
+    acoustic_df = song_df[['artist', 'song', 'acousticness']]
+    acoustic_df = acoustic_df.sort_values(['acousticness'], ascending=False)
+    toptenacoustic = acoustic_df[:10]
+    # Create visualization 8: top 'acoustic' songs
+    fig8 = px.bar(
+        toptenacoustic, 
+        x='song', 
+        y='acousticness',
+        title='Top Ten Acoustic Songs',
+        hover_data=['artist'],
+        labels={'song':'Song', 'artist':'Artist', 'acousticness': 'Acousticness'}
+    ).update_xaxes(tickangle=45)
+    # Encode chart as json
+    graph8JSON = json.dumps(fig8, cls=plotly.utils.PlotlyJSONEncoder)
+
+    # Create dataframe for top 'instrumental' songs
+    instrument_df = song_df[['artist', 'song', 'instrumentalness']]
+    instrument_df = instrument_df.sort_values(['instrumentalness'], ascending=False)
+    topteninstrumental = instrument_df[:10]
+    # Create visualization 9: top 'instrumental' songs
+    fig9 = px.bar(
+        topteninstrumental, 
+        x='song', 
+        y='instrumentalness',
+        title='Top Ten Instrumentalness Songs',
+        hover_data=['artist'],
+        labels={'song':'Song', 'artist':'Artist', 'instrumentalness': 'Instrumentalness'}
+    ).update_xaxes(tickangle=45)
+    # Encode chart as json
+    graph9JSON = json.dumps(fig9, cls=plotly.utils.PlotlyJSONEncoder)
+
+    # Create dataframe for top 'positive' songs
+    valence_df = song_df[['artist', 'song', 'valence']]
+    valence_df = valence_df.sort_values(['valence'], ascending=False)
+    toptenpositive = valence_df[:10]
+    # Create visualization 10: top 'positive' songs
+    fig10 = px.bar(
+        toptenpositive, 
+        x='song', 
+        y='valence',
+        title='Top Ten Positive Songs',
+        hover_data=['artist'],
+        labels={'song':'Song', 'artist':'Artist', 'valence': 'Valence'}
+    ).update_xaxes(tickangle=45)
+    # Encode chart as json
+    graph10JSON = json.dumps(fig10, cls=plotly.utils.PlotlyJSONEncoder)
+
+    # Create dataframe for fastest songs
+    tempo_df = song_df[['artist', 'song', 'tempo']]
+    tempo_df = tempo_df.sort_values(['tempo'], ascending=False)
+    toptenfast = tempo_df[:10]
+    # Create visualization 11: fastest songs
+    fig11 = px.bar(
+        toptenfast, 
+        x='song', 
+        y='tempo',
+        title='Top Ten Fast Songs',
+        hover_data=['artist'],
+        labels={'song':'Song', 'artist':'Artist', 'tempo': 'Tempo'}
+    ).update_xaxes(tickangle=45)
+    # Encode chart as json
+    graph11JSON = json.dumps(fig11, cls=plotly.utils.PlotlyJSONEncoder)
+
+    return render_template("index.html", 
+        graph1JSON=graph1JSON, 
+        graph2JSON=graph2JSON, 
+        graph3JSON=graph3JSON, 
+        graph4JSON=graph4JSON, 
+        graph5JSON=graph5JSON, 
+        graph6JSON=graph6JSON, 
+        graph7JSON=graph7JSON, 
+        graph8JSON=graph8JSON, 
+        graph9JSON=graph9JSON, 
+        graph10JSON=graph10JSON, 
+        graph11JSON=graph11JSON
+    )
 
 @app.route("/predict", methods=["POST"])
 def predict():
