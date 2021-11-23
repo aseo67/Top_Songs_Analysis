@@ -1,14 +1,3 @@
-Machine learning model (in README & Flask)
-✓ Description of data preprocessing 
-✓ Description of feature engineering and the feature selection, including the team's decision-making process 
-✓ Description of how data was split into training and testing sets 
-✓ Explanation of model choice, including limitations and benefits 
-✓ Explanation of changes in model choice (if changes occurred between the Segment 2 and Segment 3 deliverables) 
-✓ Description of how model was trained (or retrained, if they are using an existing model) 
-✓ Description and explanation of model’s confusion matrix, including final accuracy score
-✓ Additionally, the model obviously addresses the question or problem the team is solving.
-✓ If statistical analysis is not included as part of the current analysis, include a description of how it would be included in the next phases of the project.
-
 Dashboard/Flask App
 ✓ Presents a data story that is logical and easy to follow
 ✓ Data (images or report) from the machine learning task
@@ -58,7 +47,9 @@ Data Analytics Bootcamp 2021 Final Project
   - [app.py](https://github.com/aseo67/Top_Songs_Analysis/blob/main/app.py)
   - [run_ml.py](https://github.com/aseo67/Top_Songs_Analysis/blob/main/run_ml.py)
 
+
 ## Data Extraction
+
 1. First, data was extracted from Spotify using python script to automatically read through the Spotify United States daily Top 200 chart tracks, their ranks, and streams via the _scraping.py_ file. 
     - This script runs through each date/page since January 1, 2021 through November 17, 2021 (two days prior to the date of scraping). 
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/1_DataExtract_ListDatesToScrape.png)
@@ -77,7 +68,9 @@ Data Analytics Bootcamp 2021 Final Project
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/1_DataExtract_AudioFeatAPI.png)
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/1_DataExtract_APIReqToPandasDf.png)
     
+    
 ## Data Cleaning
+
 (continued on _Top_Songs_Analysis.DataLoading.ipynb_ file)
 1. First, the "features_df" was cleaned.
     - Unnecessary columns were removed, and appropriate values for the 'key' and 'mode' columns were relabeled for clarity. 
@@ -103,7 +96,9 @@ Data Analytics Bootcamp 2021 Final Project
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_MergeTables_SQL.png)
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_FinalMergedTable.png)
 
+
 ## Exploratory Analysis
+
 (see _Top_Songs_Analysis.Exploratory.ipynb_ file)
 1. First, the "songs_df" table was loaded from the database
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_LoadSongDf.png)
@@ -143,6 +138,62 @@ Data Analytics Bootcamp 2021 Final Project
     - The top ten songs for each feature were plotted in a bar chart; below is the chart for the 'danceability' feature. 
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_AudioFeatChart.png)
 
-## Machine Learning Model
 
+## Machine Learning Model
+The last question to answer was: **Can we predict if a song can break into the top 20 positions, based on the song's musical features?**
+To answer, a random forest machine learning model was built based on songs' audio features (as inputs) and the respective chart rank grouping (as the output) - whether it fell within the top twenty or not. 
+
+**1) Data Preprocessing:** 
+- Using the "songs" table from the database (loaded into jupyter notebook as "song_df", then saved as "song_ml_df" to make preprocessing updates), an additional column was added, codifying whether a song reached a rank within the top twenty positions or not. 
+  ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_AddTopTwentyCol.png)
+- Unnecessary columns (such as ID columns, and less relevant variables) have been removed. 
+  ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_DropCols.png)
+- Categorical variables were identified ('key' and 'mode'), and have been encoded (using LabelEncoder) so that all columns utilize numerica data. 
+  ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_EncodeCategoricalVar.png)
+  - The following screenshot provides a guide on how the categorical variables' values were encoded:
+  ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_EncodedVarGuide.png)
+
+**2) Feature Selection:** 
+- First, the model was run utilizing most of the features included in the API audio features request. The model initially focused on features that related to the musicality of the song - danceability, energy, speechiness, acousticness, instrumentalness, valence, tempo, key, and mode (major or minor). Features,  such as 'streams', 'loudness' (volume), 'duration_ms' (length of song), 'time_signature', and 'liveness', were left out of the analysis. 
+  ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_AssignVar.png)
+- Upon running the model and evaluating the results, the rank of features and their contribution to the model seemed to suggest a few could be removed to try and improve the accuracy of the model. As a test, the two lowest contributing variables ('mode_type' and 'instrumentalness') were excluded and the model was rerun. 
+  ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_FeaturesRanked.png)
+- However, results did not improve, and rather accuracy fell. Thus, the variables initially used in the model were kept. 
+  ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_FeaturesRemovedTest_EvalModel.png)
+
+**3) Training & Testing Sets:**
+- The dataset was split into training and test sets using the _train_test_split_ function from the scikit-learn library and its default split of ~75% training. 
+- There is some class imbalance, with more songs that did _not_ achieve a rank with the top twenty. Thus, SMOTEENN combination sampling was utilized to resample the data and provide a better input to train the model. 
+- Finally, with the resampled data, the data was then scaled, given the values of some of the features were on very different scales. 
+![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_SplitResampleScale.png)
+
+**4) Model Choice:**
+- A random forest model was used to build this model, as it is an ensemble learning method that provides better accuracy and robustness. It utilizes several smaller, simpler decision trees trained on different pieces of data, then combined to create a strong learner. 
+![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_RFModel.png)
+
+- _Benefits of Random Forest Model_:
+  - This model type is less prone to overfitting. 
+  - It can be used to rank importance of input variables, which is helpful to narrow down the features included and create a model that is less likely to overfit and uses less trainig time. 
+  - It can handle thousands of input variables, so the input set can be expanded to improve the model if needed. 
+  - This model type is robust against outliers, which can be helpful with a dataset like song features and ranking (essentially, audience reception) which can be more prone to outliers than a clear-cut dataset that's less based on human preference. 
+  - It can run large datasets quite efficiently, which is helpful if we want to expand this dataset even more (such as beyond just 2021). 
+- _Limitations_:
+  - It's tougher to incorporate non-tabular data into random forest models without heavy modification/cleaning. If there is a wider variety of inputs to be tested to predict the outcome, it would be tough to use this model type. 
+  - A deep learning model may be better at identifying variability in the dataset, given a random forest model uses a collection of weaker learners combined, with each trained on a subset of data, whereas a deep learning model can eavluate all input data within a single neuron or with multiple neurons/layers as needed. 
+
+
+**5) Changes/Updates to Model Choice:v asdf (deep vs. random forest - risk of overfitting)
 ![Screenshot]()
+
+**6) Model Training:** asdf (how model trained)
+![Screenshot]()
+
+**7) Model Results:** asdf (describe & explain confusion matrix, final accuracy score
+![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_EvalModel.png)
+
+
+
+
+**8) Potential Future Phases:** asdf (incl. potential statistical analysis)
+![Screenshot]()
+
