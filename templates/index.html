@@ -26,6 +26,7 @@
                   <div class="navbar-nav">
                     <a class="nav-item nav-link" style="color: #ffffff" href="#background">Background</a>
                     <a class="nav-item nav-link" style="color: #ffffff" href="#analysis">Analysis</a>
+                    <a class="nav-item nav-link" style="color: #ffffff" href="#model_process">Model Process</a>
                     <a class="nav-item nav-link" style="color: #ffffff" href="#model">Model</a>
                   </div>
                 </div>
@@ -189,30 +190,38 @@
         </script>
     </div>
     
-    <div class="container" id="model">
+    <div class="container">
         <h3><u>Machine Learning Model</u></h3>
         <h5>Can we predict whether a song will be able to achieve a rank in the top 20 positions of the Spotify United States Top 200 chart, based on various song attributes/features?</h5>
         <br>
-        <p><b><u>Machine Learning Model Process</u></b></p>
+        <p id="model_process"><b><u>Machine Learning Model Process</u></b></p>
         <li><b>Data Preprocessing:</b> 
             <ul>Using the "songs" table from the database, an additional column was added - codifying whether a song reached a rank within the top twenty positions or not.</ul>
+            <img src="https://raw.githubusercontent.com/aseo67/Top_Songs_Analysis/main/Screenshots/4_Model_AddTopTwentyCol.png" style="width: 90%">
             <ul>Unnecessary columns (such as ID columns, and less relevant variables) have been removed.</ul>
+            <img src="https://raw.githubusercontent.com/aseo67/Top_Songs_Analysis/main/Screenshots/4_Model_DropCols.png" style="width: 90%">
             <ul>Categorical variables were identified ('key' and 'mode'), and have been encoded (using LabelEncoder) so that all columns utilize numerica data.</ul>
+            <img src="https://raw.githubusercontent.com/aseo67/Top_Songs_Analysis/main/Screenshots/4_Model_EncodeCategoricalVar.png" style="width: 90%">
         </li>
         <li><b>Feature Selection:</b>
             <ul>First, the model was run utilizing most of the features included in the API audio features request.</ul>
             <ul>The model initially focused on features that related to the musicality of the song - danceability, energy, speechiness, acousticness, instrumentalness, valence, tempo, key, and mode (major or minor).</ul>
             <ul>Features, such as 'streams', 'loudness' (volume), 'duration_ms' (length of song), 'time_signature', and 'liveness', were left out of the analysis.</ul>
+            <img src="https://raw.githubusercontent.com/aseo67/Top_Songs_Analysis/main/Screenshots/4_Model_AssignVar.png" style="width: 90%">
             <ul>Upon running the model and evaluating the results, the rank of features and their contribution to the model seemed to suggest a few could be removed to try and improve the accuracy of the model.</ul>
+            <img src="https://raw.githubusercontent.com/aseo67/Top_Songs_Analysis/main/Screenshots/4_Model_FeaturesRanked.png" style="width: 90%">
             <ul>As a test, the two lowest contributing variables ('mode_type' and 'instrumentalness') were excluded and the model was rerun. However, results did not improve, and rather accuracy fell. Thus, the variables initially used in the model were kept.</ul>
+            <img src="https://raw.githubusercontent.com/aseo67/Top_Songs_Analysis/main/Screenshots/4_Model_FeaturesRemovedTest_EvalModel.png" style="width: 90%">
         </li>
         <li><b>Training & Testing Sets:</b>
             <ul>The dataset was split into training and test sets using the train_test_split function from the scikit-learn library and its default split of ~75% training.</ul>
             <ul>There is some class imbalance, with more songs that did not achieve a rank with the top twenty. Thus, SMOTEENN combination sampling was utilized to resample the data and provide a better input to train the model.</ul>
             <ul>Finally, with the resampled data, the data was then scaled, given the values of some of the features were on very different scales.</ul>
+            <img src="https://raw.githubusercontent.com/aseo67/Top_Songs_Analysis/main/Screenshots/4_Model_SplitResampleScale.png" style="width: 90%">
         </li>
         <li><b>Model Choice:</b>
             <ul>A random forest model was used to build this model, as it is an ensemble learning method that provides better accuracy and robustness. It utilizes several smaller, simpler decision trees trained on different pieces of data, then combined to create a strong learner.</ul>
+            <img src="https://raw.githubusercontent.com/aseo67/Top_Songs_Analysis/main/Screenshots/4_Model_RFModel.png" style="width: 90%">
             <ul><i>Benefits of Random Forest Model</i>
                 <ul>This model type is less prone to overfitting.</ul>
                 <ul>It can be used to rank importance of input variables, which is helpful to narrow down the features included and create a model that is less likely to overfit and uses less trainig time.</ul>
@@ -227,13 +236,17 @@
         </li>
         <li><b>Changes/Updates to Model Choice:</b>
             <ul>The random forest model has been kept, as it seems like the best fit so far out of the model explorations conducted. It allows the robustness of an ensemble learning method, but doesn't overfit as a deep learning model may.</ul>
+            <img src="https://raw.githubusercontent.com/aseo67/Top_Songs_Analysis/main/Screenshots/4_Model_DeepLearningTest_EvalModel.png" style="width: 90%">
             <ul>A deep learning was indeed tested to confirm whether overfitting is a risk, or if accuracy can be improved. Based on the tested run, the deep learning model did show improved accuracy, but reached this level after only a few epochs, suggesting that it overfitted quickly.</ul>
         </li>
         <li><b>Model Training:</b>
             <ul>The random forest model was trained using 100 estimators.</ul>
+            <img src="https://raw.githubusercontent.com/aseo67/Top_Songs_Analysis/main/Screenshots/4_Model_RFModel.png" style="width: 90%">
             <ul>Usage of more estimators was tested, but it only added a very small increase to accuracy, suggesting there isn't more improvement to be made by adding on estimators.</ul>
+            <img src="https://raw.githubusercontent.com/aseo67/Top_Songs_Analysis/main/Screenshots/4_Model_MoreEstimatorsTest.png" style="width: 90%">
         </li>
         <li><b>Model Results:</b>
+            <img src="https://raw.githubusercontent.com/aseo67/Top_Songs_Analysis/main/Screenshots/4_Model_EvalModel.png" style="width: 90%">
             <ul>The final testing accuracy score = ~0.57, which suggests the model is correct only about half the time.</ul>
             <ul>When diving deeper into the results with the confusion matrix, we see that we predicted 45 songs to not be in the top twenty ranks, when in actuality they were; and predicted 142 songs to be in the top twenty ranks, when in actuality they were not. Thus, the precision measure for determining if a song will not reach top twenty is pretty good at ~0.83, but predicting top twenty songs is not as precise (with a measure of ~0.19).</ul>
         </li>
@@ -243,7 +256,7 @@
             <ul>Testing other new features, such as: artist popularity/followers (as artist fame can be a factor), time of year/season (for example, upbeat/summer songs may have better chance at ranking higher during the summer), etc.</ul>
         </li>
         <br>
-        <p><b><u>Run Model: Provide Song Features/Attributes</u></b></p>
+        <p id="model"><b><u>Run Model: Provide Song Features/Attributes</u></b></p>
         <form action="/predict" method="POST">
             <label>Danceability (0.0 - 1.0):</label>
             <input type="float" name="danceability">
