@@ -1,11 +1,6 @@
-Dashboard/Flask App
-✓ Presents a data story that is logical and easy to follow
-✓ Data (images or report) from the machine learning task
-
-
-
 # Top Songs Analysis
-Data Analytics Bootcamp 2021 Final Project
+
+**_Data Analytics Bootcamp 2021 Final Project_**
 **Topic:** Spotify Top 200 Charts Analysis 
 **Project Questions:**
 - How many songs have entered the Top 200s chart since th start of 2021?
@@ -91,7 +86,7 @@ Data Analytics Bootcamp 2021 Final Project
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_TrackArtistDf.png)
 4. All dataframes were saved in the database. 
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_UploadToDatabase.png)
-6. Dataframes were joined together into a final, single dataframe to use for analysis later. 
+5. Dataframes were joined together into a final, single dataframe to use for analysis later. 
     - SQL script was used to join the tables within the database.
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_MergeTables_SQL.png)
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/2_DataClean_FinalMergedTable.png)
@@ -143,57 +138,53 @@ Data Analytics Bootcamp 2021 Final Project
 The last question to answer was: **Can we predict if a song can break into the top 20 positions, based on the song's musical features?**
 To answer, a random forest machine learning model was built based on songs' audio features (as inputs) and the respective chart rank grouping (as the output) - whether it fell within the top twenty or not. 
 
-**1) Data Preprocessing:** 
-- Using the "songs" table from the database (loaded into jupyter notebook as "song_df", then saved as "song_ml_df" to make preprocessing updates), an additional column was added, codifying whether a song reached a rank within the top twenty positions or not. 
-  ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_AddTopTwentyCol.png)
-- Unnecessary columns (such as ID columns, and less relevant variables) have been removed. 
-  ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_DropCols.png)
-- Categorical variables were identified ('key' and 'mode'), and have been encoded (using LabelEncoder) so that all columns utilize numerica data. 
-  ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_EncodeCategoricalVar.png)
-  - The following screenshot provides a guide on how the categorical variables' values were encoded:
-  ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_EncodedVarGuide.png)
-
-**2) Feature Selection:** 
-- First, the model was run utilizing most of the features included in the API audio features request. The model initially focused on features that related to the musicality of the song - danceability, energy, speechiness, acousticness, instrumentalness, valence, tempo, key, and mode (major or minor). Features,  such as 'streams', 'loudness' (volume), 'duration_ms' (length of song), 'time_signature', and 'liveness', were left out of the analysis. 
-  ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_AssignVar.png)
-- Upon running the model and evaluating the results, the rank of features and their contribution to the model seemed to suggest a few could be removed to try and improve the accuracy of the model. As a test, the two lowest contributing variables ('mode_type' and 'instrumentalness') were excluded and the model was rerun. 
-  ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_FeaturesRanked.png)
-- However, results did not improve, and rather accuracy fell. Thus, the variables initially used in the model were kept. 
-  ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_FeaturesRemovedTest_EvalModel.png)
-
-**3) Training & Testing Sets:**
-- The dataset was split into training and test sets using the _train_test_split_ function from the scikit-learn library and its default split of ~75% training. 
-- There is some class imbalance, with more songs that did _not_ achieve a rank with the top twenty. Thus, SMOTEENN combination sampling was utilized to resample the data and provide a better input to train the model. 
-- Finally, with the resampled data, the data was then scaled, given the values of some of the features were on very different scales. 
-![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_SplitResampleScale.png)
-
-**4) Model Choice:**
-- A random forest model was used to build this model, as it is an ensemble learning method that provides better accuracy and robustness. It utilizes several smaller, simpler decision trees trained on different pieces of data, then combined to create a strong learner. 
-![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_RFModel.png)
-
-- _Benefits of Random Forest Model_:
-  - This model type is less prone to overfitting. 
-  - It can be used to rank importance of input variables, which is helpful to narrow down the features included and create a model that is less likely to overfit and uses less trainig time. 
-  - It can handle thousands of input variables, so the input set can be expanded to improve the model if needed. 
-  - This model type is robust against outliers, which can be helpful with a dataset like song features and ranking (essentially, audience reception) which can be more prone to outliers than a clear-cut dataset that's less based on human preference. 
-  - It can run large datasets quite efficiently, which is helpful if we want to expand this dataset even more (such as beyond just 2021). 
-- _Limitations_:
-  - It's tougher to incorporate non-tabular data into random forest models without heavy modification/cleaning. If there is a wider variety of inputs to be tested to predict the outcome, it would be tough to use this model type. 
-  - A deep learning model may be better at identifying variability in the dataset, given a random forest model uses a collection of weaker learners combined, with each trained on a subset of data, whereas a deep learning model can eavluate all input data within a single neuron or with multiple neurons/layers as needed. 
-
-
-**5) Changes/Updates to Model Choice:v asdf (deep vs. random forest - risk of overfitting)
-![Screenshot]()
-
-**6) Model Training:** asdf (how model trained)
-![Screenshot]()
-
-**7) Model Results:** asdf (describe & explain confusion matrix, final accuracy score
-![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_EvalModel.png)
-
-
-
-
-**8) Potential Future Phases:** asdf (incl. potential statistical analysis)
-![Screenshot]()
-
+1. **Data Preprocessing** 
+  - Using the "songs" table from the database (loaded into jupyter notebook as "song_df", then saved as "song_ml_df" to make preprocessing updates), an additional column was added, codifying whether a song reached a rank within the top twenty positions or not. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_AddTopTwentyCol.png)
+  - Unnecessary columns (such as ID columns, and less relevant variables) have been removed. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_DropCols.png)
+  - Categorical variables were identified ('key' and 'mode'), and have been encoded (using LabelEncoder) so that all columns utilize numerica data. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_EncodeCategoricalVar.png)
+    - The following screenshot provides a guide on how the categorical variables' values were encoded:
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_EncodedVarGuide.png)
+2. **Feature Selection** 
+  - First, the model was run utilizing most of the features included in the API audio features request. The model initially focused on features that related to the musicality of the song - danceability, energy, speechiness, acousticness, instrumentalness, valence, tempo, key, and mode (major or minor). Features,  such as 'streams', 'loudness' (volume), 'duration_ms' (length of song), 'time_signature', and 'liveness', were left out of the analysis. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_AssignVar.png)
+  - Upon running the model and evaluating the results, the rank of features and their contribution to the model seemed to suggest a few could be removed to try and improve the accuracy of the model. As a test, the two lowest contributing variables ('mode_type' and 'instrumentalness') were excluded and the model was rerun. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_FeaturesRanked.png)
+  - However, results did not improve, and rather accuracy fell. Thus, the variables initially used in the model were kept. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_FeaturesRemovedTest_EvalModel.png)
+3. **Training & Testing Sets**
+  - The dataset was split into training and test sets using the _train_test_split_ function from the scikit-learn library and its default split of ~75% training. 
+  - There is some class imbalance, with more songs that did _not_ achieve a rank with the top twenty. Thus, SMOTEENN combination sampling was utilized to resample the data and provide a better input to train the model. 
+  - Finally, with the resampled data, the data was then scaled, given the values of some of the features were on very different scales. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_SplitResampleScale.png)
+4. **Model Choice**
+  - A random forest model was used to build this model, as it is an ensemble learning method that provides better accuracy and robustness. It utilizes several smaller, simpler decision trees trained on different pieces of data, then combined to create a strong learner. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_RFModel.png)
+  - _Benefits of Random Forest Model_:
+    - This model type is less prone to overfitting. 
+    - It can be used to rank importance of input variables, which is helpful to narrow down the features included and create a model that is less likely to overfit and uses less trainig time. 
+    - It can handle thousands of input variables, so the input set can be expanded to improve the model if needed. 
+    - This model type is robust against outliers, which can be helpful with a dataset like song features and ranking (essentially, audience reception) which can be more prone to outliers than a clear-cut dataset that's less based on human preference. 
+    - It can run large datasets quite efficiently, which is helpful if we want to expand this dataset even more (such as beyond just 2021). 
+  - _Limitations_:
+    - It's tougher to incorporate non-tabular data into random forest models without heavy modification/cleaning. If there is a wider variety of inputs to be tested to predict the outcome, it would be tough to use this model type. 
+    - A deep learning model may be better at identifying variability in the dataset, given a random forest model uses a collection of weaker learners combined, with each trained on a subset of data, whereas a deep learning model can eavluate all input data within a single neuron or with multiple neurons/layers as needed. 
+5. **Changes/Updates to Model Choice**
+  - The random forest model has been kept, as it seems like the best fit so far out of the model explorations conducted. It allows the robustness of an ensemble learning method, but doesn't overfit as a deep learning model may. 
+  - A deep learning was indeed tested to confirm whether overfitting is a risk, or if accuracy can be improved. Based on the tested run (see screenshot below), the deep learning model did show improved accuracy, but reached this level after only a few epochs, suggesting that it overfitted quickly.
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_DeepLearningTest_EvalModel.png)
+6. **Model Training**
+  - The random forest model was trained using 100 estimators.
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_RFModel.png)
+  - Usage of more estimators was tested, but it only added a very small increase to accuracy, suggesting there isn't more improvement to be made by adding on estimators. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_MoreEstimatorsTest.png)
+7. **Model Results** 
+  ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_EvalModel.png)
+  - The final testing accuracy score = ~0.57, which suggests the model is correct only about half the time.
+  - When diving depper into the results with the confusion matrix, we see that we predicted 45 songs to _not_ be in the top twenty ranks, when in actuality they were; and predicted 142 songs to _be in_ the top twenty ranks, when in actuality they were not. Thus, the precision measure for determining if a song will _not_ reach top twenty is pretty good at ~0.83, but predicting top twenty songs is not as precise (with a measure of ~0.19). 
+8. **Potential Future Phases & Improvements**
+Given there is room for improving the model accuracy, some potential routes to take for future phases are:
+  - Testing if the included features' (such as 'tempo', 'speechiness', and 'energy' - as these are the top features based on the random forest model's feature ranking) have statistically different values between songs that do reach top twenty vs. don't reach top twenty. This can be helpful in determining whether these features are useful in this model that aims to distinguish top twenty ranked songs from a dataset. 
+  - Testing other new features, such as: artist popularity/followers (as artist fame can be a factor), time of year/season (for example, upbeat/summer songs may have better chance at ranking higher during the summer), etc.
