@@ -137,7 +137,11 @@ Data Analytics Bootcamp 2021 Final Project
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_TopHitsArtists.png)
     - The top ten artists with the most #1 hits have been charted in the visualization below. 
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_TopTenHitsArtists.png)
-9. **Which songs are most danceable? Most energetic? Most positive-sounding (high valence)?**
+9. **Question 8) Which songs are most danceable? Most energetic? Most positive-sounding (high valence)?, etc.**
+    - Analyses were conducted for each of the focus audio features, determinining the top ten songs for each attribute. Below is an example for the 'danceability' feature, where we identify the song that's most 'danceable' as "NEO" by Aminé. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_AudioFeatTable.png)
+    - The top ten songs for each feature were plotted in a bar chart; below is the chart for the 'danceability' feature. 
+    ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_AudioFeatChart.png)
 
 ## Machine Learning Model
 
