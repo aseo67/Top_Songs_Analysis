@@ -1,27 +1,30 @@
 # Top Songs Analysis
 
 **_Data Analytics Bootcamp 2021 Final Project_**
+<br>
+<br>
 **Topic:** Spotify Top 200 Charts Analysis 
+<br>
+<br>
 **Project Questions:**
-- How many songs have entered the Top 200s chart since th start of 2021?
+- How many songs have entered the Top 200s chart since the start of 2021?
 - What songs have the most streams?
 - What songs have been #1 on the charts? 
 - Which artists have the most streams?
 - Which artists have the most songs on the chart?
 - Which artists have the most #1 hits?
-- Which songs are most danceable? Most energetic? Most positive-sounding (high valence)? 
-- Can we predict if a song can break into the top 20 positions, based on the song's musical features?
+- Which songs are most danceable? Most energetic? Most positive-sounding (high valence)? etc.
+- Can we predict if a song can break into the top 20 positions, based on the song's audio features?
 
 **Data Source:** 
 - Scraped data from Spotify Top 200 Charts
-  - Top 200 Charts, Daily
-  - Country: United States
+  - Top 200 Charts, Daily, United States
   - Timeframe: Jan. 1, 2021 - Nov. 17, 2021
   - Source Link: [Spotify Charts](https://spotifycharts.com/regional/us/daily/)
   - Raw Scraped Data File: [spotifytop200.csv](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Resources/spotifytop200.csv)
-  - Raw API Request Data for Song Features: [features.csv](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Resources/features.csv)
-- Corresponding Spotify audio features data for scraped tracks
-  - Source Link (API): [Spotify - Web API - Audio Features](https://developer.spotify.com/discover/)
+- Spotify audio features data for scraped tracks
+  - Source Link (API Info): [Spotify - Web API - Audio Features](https://developer.spotify.com/discover/)
+  - Raw Song Audio Features API Request Data File: [features.csv](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Resources/features.csv)
 
 **Final Presentation Links**
 - Google Slides: [link](https://docs.google.com/presentation/d/1-EKrs4luwS2UCQAzGb-Srn8esqcOBt605LFtJNwqsL4/edit?usp=sharing)
@@ -34,13 +37,14 @@
 - SQL Script for Database Tables [Create_Merge_Table_Script.sql](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Create_Merge_Table_Script.sql)
 - Database diagram: [ERD](https://github.com/aseo67/Top_Songs_Analysis/blob/main/ERD/QuickDBD-export.png)
 - Exploratory Analysis Code: [TopSongsAnalysis_Exploratory.ipynb](https://github.com/aseo67/Top_Songs_Analysis/blob/main/TopSongsAnalysis_Exploratory.ipynb)
-- Plotly Chart Images: [Visualizations](https://github.com/aseo67/Top_Songs_Analysis/tree/main/Visualizations)
+- Plotly Chart Image Files: [Visualizations](https://github.com/aseo67/Top_Songs_Analysis/tree/main/Visualizations)
 - Machine Learning Model Code: [TopSongsAnalsis_Model.ipynb](https://github.com/aseo67/Top_Songs_Analysis/blob/main/TopSongsAnalysis_Model.ipynb)
 - Flask Dashboard Files:
   - [index.html](https://github.com/aseo67/Top_Songs_Analysis/blob/main/templates/index.html)
   - [results.html](https://github.com/aseo67/Top_Songs_Analysis/blob/main/templates/results.html)
   - [app.py](https://github.com/aseo67/Top_Songs_Analysis/blob/main/app.py)
   - [run_ml.py](https://github.com/aseo67/Top_Songs_Analysis/blob/main/run_ml.py)
+- Screenshots: [Folder](https://github.com/aseo67/Top_Songs_Analysis/tree/main/Screenshots)
 
 
 ## Data Extraction
