@@ -37,7 +37,7 @@
 - Database diagram: [ERD](https://github.com/aseo67/Top_Songs_Analysis/blob/main/ERD/QuickDBD-export.png)
 - Exploratory Analysis Code: [TopSongsAnalysis_Exploratory.ipynb](https://github.com/aseo67/Top_Songs_Analysis/blob/main/TopSongsAnalysis_Exploratory.ipynb)
 - Plotly Chart Image Files: [Visualizations](https://github.com/aseo67/Top_Songs_Analysis/tree/main/Visualizations)
-- Machine Learning Model Code: [TopSongsAnalsis_Model.ipynb](https://github.com/aseo67/Top_Songs_Analysis/blob/main/TopSongsAnalysis_Model.ipynb)
+- Machine Learning Model Code: [TopSongsAnalysis_Model.ipynb](https://github.com/aseo67/Top_Songs_Analysis/blob/main/TopSongsAnalysis_Model.ipynb)
 - Flask Dashboard Files:
   - [index.html](https://github.com/aseo67/Top_Songs_Analysis/blob/main/templates/index.html)
   - [results.html](https://github.com/aseo67/Top_Songs_Analysis/blob/main/templates/results.html)
