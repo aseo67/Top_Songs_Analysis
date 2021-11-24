@@ -134,7 +134,7 @@
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_AudioFeatTable.png)
     - The top ten songs for each feature were plotted in a bar chart; below is the chart for the 'danceability' feature. 
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/3_DataAnalysis_AudioFeatChart.png)
-
+    - Additional visualizations for each of the audio features are available on the flask dashboard. 
 
 ## Machine Learning Model
 The last question to answer was: **Can we predict if a song can break into the top 20 positions, based on the song's musical features?**
@@ -158,7 +158,7 @@ To answer, a random forest machine learning model was built based on songs' audi
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_FeaturesRemovedTest_EvalModel.png)
 3. **Training & Testing Sets**
   - The dataset was split into training and test sets using the _train_test_split_ function from the scikit-learn library and its default split of ~75% training. 
-  - There is some class imbalance, with more songs that did _not_ achieve a rank with the top twenty. Thus, SMOTEENN combination sampling was utilized to resample the data and provide a better input to train the model. 
+  - There is some class imbalance, with more songs that did _not_ achieve a rank with the top twenty. Thus, the SMOTEENN technique was utilized to resample the data and provide a better input to train the model. 
   - Finally, with the resampled data, the data was then scaled, given the values of some of the features were on very different scales. 
     ![Screenshot](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Screenshots/4_Model_SplitResampleScale.png)
 4. **Model Choice**
@@ -172,7 +172,7 @@ To answer, a random forest machine learning model was built based on songs' audi
     - It can run large datasets quite efficiently, which is helpful if we want to expand this dataset even more (such as beyond just 2021). 
   - _Limitations_:
     - It's tougher to incorporate non-tabular data into random forest models without heavy modification/cleaning. If there is a wider variety of inputs to be tested to predict the outcome, it would be tough to use this model type. 
-    - A deep learning model may be better at identifying variability in the dataset, given a random forest model uses a collection of weaker learners combined, with each trained on a subset of data, whereas a deep learning model can eavluate all input data within a single neuron or with multiple neurons/layers as needed. 
+    - A deep learning model may be better at identifying variability in the dataset, given a random forest model uses a collection of weaker learners combined, with each trained on a subset of data, whereas a deep learning model can evaluate all input data within a single neuron or with multiple neurons/layers as needed. 
 5. **Changes/Updates to Model Choice**
   - The random forest model has been kept, as it seems like the best fit so far out of the model explorations conducted. It allows the robustness of an ensemble learning method, but doesn't overfit as a deep learning model may. 
   - A deep learning was indeed tested to confirm whether overfitting is a risk, or if accuracy can be improved. Based on the tested run (see screenshot below), the deep learning model did show improved accuracy, but reached this level after only a few epochs, suggesting that it overfitted quickly.
