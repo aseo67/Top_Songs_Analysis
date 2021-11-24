@@ -215,7 +215,7 @@
         </li>
         <li><b>Training & Testing Sets:</b>
             <ul>The dataset was split into training and test sets using the train_test_split function from the scikit-learn library and its default split of ~75% training.</ul>
-            <ul>There is some class imbalance, with more songs that did not achieve a rank with the top twenty. Thus, SMOTEENN combination sampling was utilized to resample the data and provide a better input to train the model.</ul>
+            <ul>There is some class imbalance, with more songs that did not achieve a rank with the top twenty. Thus, the SMOTEENN technique was utilized to resample the data and provide a better input to train the model.</ul>
             <ul>Finally, with the resampled data, the data was then scaled, given the values of some of the features were on very different scales.</ul>
             <img src="https://raw.githubusercontent.com/aseo67/Top_Songs_Analysis/main/Screenshots/4_Model_SplitResampleScale.png" style="width: 90%">
         </li>
@@ -231,7 +231,7 @@
             </ul>
             <ul><i>Limitations of Random Forest Model</i>
                 <ul>It's tougher to incorporate non-tabular data into random forest models without heavy modification/cleaning. If there is a wider variety of inputs to be tested to predict the outcome, it would be tough to use this model type.</ul>
-                <ul>A deep learning model may be better at identifying variability in the dataset, given a random forest model uses a collection of weaker learners combined, with each trained on a subset of data, whereas a deep learning model can eavluate all input data within a single neuron or with multiple neurons/layers as needed.</ul>
+                <ul>A deep learning model may be better at identifying variability in the dataset, given a random forest model uses a collection of weaker learners combined, with each trained on a subset of data, whereas a deep learning model can evaluate all input data within a single neuron or with multiple neurons/layers as needed.</ul>
             </ul>
         </li>
         <li><b>Changes/Updates to Model Choice:</b>
