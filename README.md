@@ -27,8 +27,8 @@
 
 **Final Presentation Links**
 - Google Slides: [link](https://docs.google.com/presentation/d/1-EKrs4luwS2UCQAzGb-Srn8esqcOBt605LFtJNwqsL4/edit?usp=sharing)
-- Google Slides (PPT version) [link]()
-- Presentation Recording: [link]()
+- Google Slides (PDF version) [pdf](https://github.com/aseo67/Top_Songs_Analysis/blob/main/Presentation/Final%20Project_Slides_Songs%20Analysis_Seo.pdf)
+- Presentation Recording: [link](https://youtu.be/jN7ACYxz4f0)
 
 **Final Deliverables**
 - Data Scraping File: [scraping.py](https://github.com/aseo67/Top_Songs_Analysis/blob/main/scraping.py)
